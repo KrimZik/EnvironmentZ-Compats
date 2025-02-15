@@ -1,0 +1,14 @@
+{
+    "betternether:willow_torch": {
+        "temperature": 0.5
+    },
+    "betternether:cincinnasite_lantern_small": {
+        "temperature": 0.5
+    },
+    "betternether:cincinnasite_lantern": {
+        "temperature": 0.5
+    },
+    "betternether:whispering_gourd_lantern": {
+        "temperature": 0.5
+    }
+}
