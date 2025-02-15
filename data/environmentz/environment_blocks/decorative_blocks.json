@@ -1,0 +1,28 @@
+{
+    "decorative_blocks:chandelier": {
+        "max_count": 10,
+        "1": 0.3,
+        "6": 0.2,
+        "9": 0.1
+    },
+    "decorative_blocks:soul_chandelier": {
+        "max_count": 10,
+        "1": 0.3,
+        "6": 0.2,
+        "9": 0.1
+    },
+    "decorative_blocks:brazier": {
+        "max_count": 10,
+        "1": 1,
+        "3": 0.8,
+        "6": 0.6,
+        "9": 0.3
+    },
+    "decorative_blocks:soul_brazier": {
+        "max_count": 10,
+        "1": 1,
+        "3": 0.8,
+        "6": 0.6,
+        "9": 0.3
+    }
+}
