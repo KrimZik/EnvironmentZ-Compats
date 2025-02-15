@@ -1,0 +1,20 @@
+{
+    "beachparty:palm_torch": {
+        "max_count": 10,
+        "1": 0.3,
+        "6": 0.2,
+        "9": 0.1
+    },
+    "beachparty:palm_wall_torch": {
+        "max_count": 10,
+        "1": 0.3,
+        "6": 0.2,
+        "9": 0.1
+    },
+    "beachparty:palm_tall_torch": {
+        "max_count": 10,
+        "1": 0.3,
+        "6": 0.2,
+        "9": 0.1
+    }
+}
