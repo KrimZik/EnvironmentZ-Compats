@@ -129,6 +129,7 @@ jobs:
             --arg primary_file "$PRIMARY_FILE" \
             --argjson file_parts "$FILE_PARTS" \
             --argjson dependencies '[{"dependency_type": "required", "project_id": "TggYmc6t"}]' \
+            --argjson featured "true" \
             '{
               name: $name,
               version_number: $version_number,
@@ -139,7 +140,8 @@ jobs:
               project_id: $project_id,
               primary_file: $primary_file,
               file_parts: $file_parts,
-              dependencies: $dependencies
+              dependencies: $dependencies,
+              "featured": $featured
             }')
 
           # Debugging: Print JSON payload before sending
