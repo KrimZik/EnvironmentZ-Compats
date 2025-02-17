@@ -101,10 +101,23 @@ jobs:
         run: |
           for FILE in ${{ env.ZIP_FILES }}; do
             echo "Uploading $FILE to Modrinth..."
-            curl -X POST "https://api.modrinth.com/v2/version" \
+            RESPONSE=$(curl -X POST "https://api.modrinth.com/v2/version" \
               -H "Authorization: ${{ secrets.MODRINTH_API_KEY }}" \
               -H "Content-Type: multipart/form-data" \
               -F "data=@release-assets/modrinth_metadata.json;type=application/json" \
-              -F "primary_file=@$FILE"
+              -F "primary_file=@$FILE" -w "%{http_code}" -o upload_response.json)
+
+            HTTP_STATUS=$(tail -n1 <<< "$RESPONSE")
+
+            if [[ "$HTTP_STATUS" == "502" ]]; then
+              echo "⚠️ ERROR: Received 502 Bad Gateway from Modrinth. Retrying in 10 seconds..."
+              sleep 10
+              continue
+            elif [[ "$HTTP_STATUS" != "200" && "$HTTP_STATUS" != "201" ]]; then
+              echo "❌ ERROR: Upload failed with status code $HTTP_STATUS"
+              cat upload_response.json
+              exit 1
+            fi
+
             echo "✅ Successfully uploaded $FILE to Modrinth"
           done
