@@ -1,71 +1,87 @@
-- name: Upload to Modrinth
-  run: |
-    MODRINTH_API_URL="https://api.modrinth.com/v2/version"
-    PROJECT_ID="${{ vars.MODRINTH_PROJECT_ID }}"
-    USER_AGENT="${{ github.repository_owner }}/EnvironmentZCompats/${{ env.MOD_VERSION }} (github.com/${{ github.repository_owner }})"
+name: Upload to Modrinth
 
-    # Ensure the primary file exists
-    if [ ! -f "release-assets/$PRIMARY_FILE" ]; then
-      echo "❌ ERROR: Primary file $PRIMARY_FILE does not exist."
-      exit 1
-    fi
+on:
+  workflow_run:
+    workflows: ["Create Release Zip"]
+    types:
+      - completed
 
-    # Ensure the file name is only the filename, not the path
-    FILE_PARTS="[\"$PRIMARY_FILE\"]"
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'
 
-    # Validate dependencies structure (ensure it's Base62 formatted)
-    DEPENDENCIES='[{"dependency_type": "required", "project_id": "environmentz"}]'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    # Generate JSON metadata
-    METADATA=$(jq -n \
-      --arg name "EnvironmentZCompats $MOD_VERSION" \
-      --arg version_number "$MOD_VERSION" \
-      --argjson changelog "$CHANGELOG" \
-      --argjson game_versions '["'"$MC_VERSION"'"]' \
-      --argjson loaders '["minecraft"]' \
-      --arg version_type "release" \
-      --arg project_id "$PROJECT_ID" \
-      --arg primary_file "$PRIMARY_FILE" \
-      --argjson file_parts '["'"$PRIMARY_FILE"'"]' \
-      --argjson dependencies "$DEPENDENCIES" \
-      '{
-        "name": $name,
-        "version_number": $version_number,
-        "changelog": $changelog,
-        "game_versions": $game_versions,
-        "loaders": $loaders,
-        "version_type": $version_type,
-        "project_id": $project_id,
-        "primary_file": $primary_file,
-        "file_parts": $file_parts,
-        "dependencies": $dependencies
-      }')
+      - name: Upload to Modrinth
+        run: |
+          MODRINTH_API_URL="https://api.modrinth.com/v2/version"
+          PROJECT_ID="${{ vars.MODRINTH_PROJECT_ID }}"
+          USER_AGENT="${{ github.repository_owner }}/EnvironmentZCompats/${{ env.MOD_VERSION }} (github.com/${{ github.repository_owner }})"
 
-    # Debugging: Print JSON payload before sending
-    echo "Generated JSON metadata:"
-    echo "$METADATA" | jq .
+          # Ensure the primary file exists
+          if [ ! -f "release-assets/$PRIMARY_FILE" ]; then
+            echo "❌ ERROR: Primary file $PRIMARY_FILE does not exist."
+            exit 1
+          fi
 
-    # Validate JSON before sending
-    echo "$METADATA" | jq . > /dev/null
-    if [ $? -ne 0 ]; then
-      echo "❌ ERROR: Invalid JSON format."
-      exit 1
-    fi
+          # Ensure the file name is only the filename, not the path
+          FILE_PARTS="[\"$PRIMARY_FILE\"]"
 
-    # Upload the version to Modrinth
-    RESPONSE=$(curl -X POST "$MODRINTH_API_URL" \
-      -H "Authorization: Bearer ${{ secrets.MODRINTH_PAT }}" \
-      -H "User-Agent: $USER_AGENT" \
-      -H "Content-Type: multipart/form-data" \
-      -F "data=$METADATA" \
-      -F "primary_file=@release-assets/$PRIMARY_FILE" -w "%{http_code}" -o upload_response.json)
+          # Validate dependencies structure (ensure it's Base62 formatted)
+          DEPENDENCIES='[{"dependency_type": "required", "project_id": "environmentz"}]'
 
-    HTTP_STATUS=$(tail -n1 upload_response.json)
+          # Generate JSON metadata
+          METADATA=$(jq -n \
+            --arg name "EnvironmentZCompats $MOD_VERSION" \
+            --arg version_number "$MOD_VERSION" \
+            --arg changelog "$CHANGELOG" \
+            --argjson game_versions "[\"$MC_VERSION\"]" \
+            --argjson loaders "[\"minecraft\"]" \
+            --arg version_type "release" \
+            --arg project_id "$PROJECT_ID" \
+            --arg primary_file "$PRIMARY_FILE" \
+            --argjson file_parts "[\"$PRIMARY_FILE\"]" \
+            --argjson dependencies "$DEPENDENCIES" \
+            '{
+              "name": $name,
+              "version_number": $version_number,
+              "changelog": $changelog,
+              "game_versions": $game_versions,
+              "loaders": $loaders,
+              "version_type": $version_type,
+              "project_id": $project_id,
+              "primary_file": $primary_file,
+              "file_parts": $file_parts,
+              "dependencies": $dependencies
+            }')
 
-    if [[ "$HTTP_STATUS" != "200" && "$HTTP_STATUS" != "201" ]]; then
-      echo "❌ ERROR: Upload failed with status code $HTTP_STATUS"
-      cat upload_response.json
-      exit 1
-    else
-      echo "✅ Successfully uploaded to Modrinth"
-    fi
+          # Debugging: Print JSON payload before sending
+          echo "Generated JSON metadata:"
+          echo "$METADATA" | jq .
+
+          # Validate JSON before sending
+          if ! echo "$METADATA" | jq . > /dev/null; then
+            echo "❌ ERROR: Invalid JSON format."
+            exit 1
+          fi
+
+          # Upload the version to Modrinth
+          RESPONSE=$(curl -X POST "$MODRINTH_API_URL" \
+            -H "Authorization: Bearer ${{ secrets.MODRINTH_PAT }}" \
+            -H "User-Agent: $USER_AGENT" \
+            -H "Content-Type: multipart/form-data" \
+            -F "data=$METADATA" \
+            -F "primary_file=@release-assets/$PRIMARY_FILE" -w "%{http_code}" -o upload_response.json)
+
+          HTTP_STATUS=$(tail -n1 upload_response.json)
+
+          if [[ "$HTTP_STATUS" != "200" && "$HTTP_STATUS" != "201" ]]; then
+            echo "❌ ERROR: Upload failed with status code $HTTP_STATUS"
+            cat upload_response.json
+            exit 1
+          else
+            echo "✅ Successfully uploaded to Modrinth"
+          fi
