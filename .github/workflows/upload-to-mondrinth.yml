@@ -71,7 +71,7 @@ jobs:
           echo "$ZIP_FILES" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-      # 5️⃣ Upload new ZIPs to Modrinth (Includes `dependencies`)
+      # 5️⃣ Upload new ZIPs to Modrinth (Fixes JSON formatting)
       - name: Upload ZIPs to Modrinth
         run: |
           for FILE in ${{ env.ZIP_FILES }}; do
@@ -99,21 +99,28 @@ jobs:
             # Define dependencies array with EnvironmentZ as required
             DEPENDENCIES='[{"dependency_type": "required", "project_id": "environmentz"}]'
 
-            # Upload to Modrinth (Includes `dependencies`, `primary_file`, and `file_parts`)
+            # Prepare JSON metadata file
+            JSON_PAYLOAD="release-assets/modrinth_metadata.json"
+            echo '{
+              "name": "Release '"$MOD_VERSION"'",
+              "version_number": "'"$MOD_VERSION"'",
+              "game_versions": ["'"$MC_VERSION"'"],
+              "loaders": ["minecraft"],
+              "version_type": "release",
+              "project_id": "'"${{ secrets.MODRINTH_PROJECT_ID }}"'",
+              "primary_file": "'"$FILE_NAME"'",
+              "file_parts": ["'"$FILE_NAME"'"],
+              "dependencies": '"$DEPENDENCIES"',
+              "changelog": "'"${{ github.event.release.body }}"'"
+            }' > "$JSON_PAYLOAD"
+
+            # Upload to Modrinth
             echo "Uploading $FILE to Modrinth..."
             curl -X POST "https://api.modrinth.com/v2/version" \
               -H "Authorization: ${{ secrets.MODRINTH_API_KEY }}" \
-              -H "Accept: application/json" \
-              -F "name=Release $MOD_VERSION" \
-              -F "version_number=$MOD_VERSION" \
-              -F "game_versions=$MC_VERSION" \
-              -F "loaders=minecraft" \
-              -F "version_type=release" \
-              -F "project_id=${{ secrets.MODRINTH_PROJECT_ID }}" \
-              -F "primary_file=@$FILE" \
-              -F "file_parts=$FILE_NAME" \
-              -F "dependencies=$DEPENDENCIES" \
-              -F "changelog=${{ github.event.release.body }}"
+              -H "Content-Type: multipart/form-data" \
+              -F "data=@$JSON_PAYLOAD;type=application/json" \
+              -F "primary_file=@$FILE"
 
             echo "✅ Successfully uploaded $FILE to Modrinth"
           done
