@@ -93,20 +93,20 @@ jobs:
             # Generate JSON metadata file
             JSON_PAYLOAD="release-assets/modrinth_metadata.json"
 
-            cat <<EOF > "$JSON_PAYLOAD"
-            {
-              "name": "Release $MOD_VERSION",
-              "version_number": "$MOD_VERSION",
-              "game_versions": ["$MC_VERSION"],
-              "loaders": ["minecraft"],
-              "version_type": "release",
-              "project_id": "${{ secrets.MODRINTH_PROJECT_ID }}",
-              "primary_file": "$FILE_NAME",
-              "file_parts": ["$FILE_NAME"],
-              "dependencies": $DEPENDENCIES,
-              "changelog": "$(echo "$CHANGELOG" | jq -Rsa .)"
-            }
-            EOF
+            cat > "$JSON_PAYLOAD" <<EOF
+{
+  "name": "Release $MOD_VERSION",
+  "version_number": "$MOD_VERSION",
+  "game_versions": ["$MC_VERSION"],
+  "loaders": ["minecraft"],
+  "version_type": "release",
+  "project_id": "${{ secrets.MODRINTH_PROJECT_ID }}",
+  "primary_file": "$FILE_NAME",
+  "file_parts": ["$FILE_NAME"],
+  "dependencies": $DEPENDENCIES,
+  "changelog": "$(echo "$CHANGELOG" | jq -Rsa .)"
+}
+EOF
 
             echo "Uploading $FILE to Modrinth..."
             curl -X POST "https://api.modrinth.com/v2/version" \
