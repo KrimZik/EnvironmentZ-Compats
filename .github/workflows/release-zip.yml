@@ -3,23 +3,24 @@ name: Create Release Zip
 on:
   push:
     tags:
-      - 'v*.*.*'  # Trigger on tags like v1.20.1
+      - 'v*.*.*'  # Adjust this pattern if needed
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the code at the tag
+      # Checkout the repository code at the tag
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          # Ensure you're checking out the tag reference
           ref: ${{ github.ref }}
 
-      # Zip the EnvironmentZCompat folder
-      - name: Zip the EnvironmentZCompat folder
-        run: zip -r EnvironmentZCompat.zip EnvironmentZCompat
+      # Navigate to the EnvironmentZCompat folder and zip only the desired files/folder
+      - name: Zip specific files
+        run: |
+          cd EnvironmentZCompat
+          zip -r ../environmentz-compat.zip data icon.png pack.mcmeta
 
       # Create a GitHub Release
       - name: Create GitHub Release
