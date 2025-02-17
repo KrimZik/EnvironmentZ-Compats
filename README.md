@@ -2,6 +2,7 @@
 - [Terralith](https://modrinth.com/datapack/terralith)
 - [Fabric Seasons: Extras](https://modrinth.com/mod/fabric-seasons-extras)
 - [Amendments](https://modrinth.com/mod/amendments)
+- [Oxidized](https://modrinth.com/mod/oxidized)
 - [Better Nether](https://modrinth.com/mod/betternether)
 - [Better End](https://modrinth.com/mod/betterend)
 
