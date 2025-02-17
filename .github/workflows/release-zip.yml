@@ -20,7 +20,7 @@ jobs:
       - name: Zip specific files from EnvironmentZCompat
         run: |
           cd EnvironmentZCompat
-          zip -r ../environmentz-compat.zip data icon.png pack.mcmeta
+          zip -r ../EnvironmentZCompat.zip data icon.png pack.mcmeta
 
       # Create a GitHub Release using the pushed tag
       - name: Create GitHub Release
