@@ -91,10 +91,21 @@ jobs:
           echo "PRIMARY_FILE=$PRIMARY_FILE" >> $GITHUB_ENV
           echo "✅ Extracted versions: Mod Version: $MOD_VERSION, Minecraft Version: $MC_VERSION"
 
+      - name: Validate Modrinth Project ID
+        run: |
+          PROJECT_ID="${{ vars.MODRINTH_PROJECT_ID }}"
+
+          if [[ -z "$PROJECT_ID" || ! "$PROJECT_ID" =~ ^[a-zA-Z0-9_-]+$ ]]; then
+            echo "❌ ERROR: Invalid or missing MODRINTH_PROJECT_ID"
+            exit 1
+          fi
+
+          echo "PROJECT_ID=$PROJECT_ID" >> $GITHUB_ENV
+
       - name: Upload to Modrinth
         run: |
           MODRINTH_API_URL="https://api.modrinth.com/v2/version"
-          PROJECT_ID="${{ secrets.MODRINTH_PROJECT_ID }}"  # FIX: Ensure project ID is correctly set
+          PROJECT_ID="${{ vars.MODRINTH_PROJECT_ID }}"  # FIX: Use repository variable
           USER_AGENT="${{ github.repository_owner }}/EnvironmentZCompats/${{ env.MOD_VERSION }} (github.com/${{ github.repository_owner }})"
 
           # Ensure the primary file exists
