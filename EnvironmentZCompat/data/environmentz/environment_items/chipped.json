@@ -1,0 +1,173 @@
+{
+    "chipped:blue_paper_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:burning_coal_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:checkered_iron_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:dark_blue_paper_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:ender_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:green_paper_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:iron_bowl_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:purple_paper_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:red_paper_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:small_green_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:white_paper_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:wooden_cage_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:wrought_iron_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:yellow_tube_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:blue_paper_soul_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:blue_tube_soul_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:checkered_iron_soul_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:golden_paper_soul_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:gray_paper_soul_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:iron_bowl_soul_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:lime_paper_soul_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:orange_paper_soul_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:small_red_soul_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:wooden_cage_soul_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:yellow_paper_soul_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:big_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:donut_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:tall_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:wide_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:big_soul_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:donut_soul_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:tall_soul_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:wide_soul_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:edged_glowstone_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:fancy_glowstone_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:framed_glowstone_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:glowstone_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:ornate_glowstone_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:edged_shroomlight_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:fancy_shroomlight_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:framed_shroomlight_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:ornate_shroomlight_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:shroomlight_lantern": {
+        "temperature": 0.5
+    },
+    "chipped:acacia_torch": {
+        "temperature": 0.5
+    },
+    "chipped:birch_torch": {
+        "temperature": 0.5
+    },
+    "chipped:crimson_torch": {
+        "temperature": 0.5
+    },
+    "chipped:dark_oak_torch": {
+        "temperature": 0.5
+    },
+    "chipped:glow_torch": {
+        "temperature": 0.5
+    },
+    "chipped:iron_torch": {
+        "temperature": 0.5
+    },
+    "chipped:jungle_torch": {
+        "temperature": 0.5
+    },
+    "chipped:spruce_torch": {
+        "temperature": 0.5
+    },
+    "chipped:warped_torch": {
+        "temperature": 0.5
+    },
+    "chipped:blue_redstone_torch": {
+        "temperature": 0.5
+    },
+    "chipped:crimson_redstone_torch": {
+        "temperature": 0.5
+    },
+    "chipped:green_redstone_torch": {
+        "temperature": 0.5
+    },
+    "chipped:lightstick_redstone_torch": {
+        "temperature": 0.5
+    },
+    "chipped:yellow_redstone_torch": {
+        "temperature": 0.5
+    }
+}
