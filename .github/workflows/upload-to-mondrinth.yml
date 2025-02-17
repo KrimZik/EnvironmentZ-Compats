@@ -21,24 +21,24 @@
       --arg name "EnvironmentZCompats $MOD_VERSION" \
       --arg version_number "$MOD_VERSION" \
       --argjson changelog "$CHANGELOG" \
-      --argjson game_versions "[\"$MC_VERSION\"]" \
-      --argjson loaders "[\"minecraft\"]" \
+      --argjson game_versions '["'"$MC_VERSION"'"]' \
+      --argjson loaders '["minecraft"]' \
       --arg version_type "release" \
       --arg project_id "$PROJECT_ID" \
       --arg primary_file "$PRIMARY_FILE" \
-      --argjson file_parts "$FILE_PARTS" \
+      --argjson file_parts '["'"$PRIMARY_FILE"'"]' \
       --argjson dependencies "$DEPENDENCIES" \
       '{
-        name: $name,
-        version_number: $version_number,
-        changelog: $changelog,
-        game_versions: $game_versions,
-        loaders: $loaders,
-        version_type: $version_type,
-        project_id: $project_id,
-        primary_file: $primary_file,
-        file_parts: $file_parts,
-        dependencies: $dependencies
+        "name": $name,
+        "version_number": $version_number,
+        "changelog": $changelog,
+        "game_versions": $game_versions,
+        "loaders": $loaders,
+        "version_type": $version_type,
+        "project_id": $project_id,
+        "primary_file": $primary_file,
+        "file_parts": $file_parts,
+        "dependencies": $dependencies
       }')
 
     # Debugging: Print JSON payload before sending
@@ -60,7 +60,7 @@
       -F "data=$METADATA" \
       -F "primary_file=@release-assets/$PRIMARY_FILE" -w "%{http_code}" -o upload_response.json)
 
-    HTTP_STATUS=$(tail -n1 <<< "$RESPONSE")
+    HTTP_STATUS=$(tail -n1 upload_response.json)
 
     if [[ "$HTTP_STATUS" != "200" && "$HTTP_STATUS" != "201" ]]; then
       echo "❌ ERROR: Upload failed with status code $HTTP_STATUS"
