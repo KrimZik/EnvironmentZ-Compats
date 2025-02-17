@@ -70,7 +70,12 @@ jobs:
       - name: Extract version information
         id: extract_versions
         run: |
-          FILE=$(echo $ZIP_FILES | head -n1)  # Take the first valid file
+          FILE=$(echo "$ZIP_FILES" | head -n1)  # Select the first valid ZIP file
+          if [ -z "$FILE" ]; then
+            echo "❌ ERROR: No valid ZIP file found!"
+            exit 1
+          fi
+
           MOD_VERSION=$(echo "$FILE" | grep -oP 'EnvironmentZCompat-\K[\d]+\.[\d]+\.[\d]+(?=-)')
           MC_VERSION=$(echo "$FILE" | grep -oP '[\d]+\.[\d]+\.[\d]+(?=\.zip)')
 
@@ -79,8 +84,11 @@ jobs:
             exit 1
           fi
 
+          PRIMARY_FILE=$(basename "$FILE")  # Now PRIMARY_FILE is correctly assigned
+
           echo "MOD_VERSION=$MOD_VERSION" >> $GITHUB_ENV
           echo "MC_VERSION=$MC_VERSION" >> $GITHUB_ENV
+          echo "PRIMARY_FILE=$PRIMARY_FILE" >> $GITHUB_ENV
           echo "✅ Extracted versions: Mod Version: $MOD_VERSION, Minecraft Version: $MC_VERSION"
 
       - name: Upload to Modrinth
@@ -88,15 +96,6 @@ jobs:
           MODRINTH_API_URL="https://api.modrinth.com/v2/version"
           PROJECT_ID="${{ secrets.MODRINTH_PROJECT_ID }}"
           USER_AGENT="${{ github.repository_owner }}/EnvironmentZCompats/${{ env.MOD_VERSION }} (github.com/${{ github.repository_owner }})"
-
-          # Ensure ZIP files exist
-          if [ -z "$ZIP_FILES" ]; then
-            echo "❌ ERROR: No ZIP files found to upload."
-            exit 1
-          fi
-
-          # Set primary file as the first ZIP file found
-          PRIMARY_FILE=$(basename "$FILE")
 
           # Ensure the primary file exists
           if [ ! -f "release-assets/$PRIMARY_FILE" ]; then
