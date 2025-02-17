@@ -3,24 +3,30 @@ name: Create Release Zip
 on:
   push:
     tags:
-      - 'v*.*.*'  # Adjust the tag pattern as needed
+      - 'v*.*.*'  # Adjust the pattern if needed
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository at the pushed tag
+      # Checkout the repository at the tag that triggered the workflow
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
 
-      # Change into EnvironmentZCompat and zip only the desired items
-      - name: Zip specific files from EnvironmentZCompat
+      # Create a temporary directory and copy the contents of EnvironmentZCompat into it.
+      # Then zip the contents of the temporary directory, ensuring that the zip's root
+      # contains only the files/folders from EnvironmentZCompat.
+      - name: Prepare zip archive from EnvironmentZCompat contents
         run: |
-          cd EnvironmentZCompat
-          zip -r ../EnvironmentZCompat.zip data icon.png pack.mcmeta
+          mkdir temp
+          cp -r EnvironmentZCompat/* temp/
+          cd temp
+          zip -r ../environmentz-compat.zip .
+          cd ..
+          rm -rf temp
 
       # Create a GitHub Release using the pushed tag
       - name: Create GitHub Release
@@ -34,7 +40,7 @@ jobs:
           draft: false
           prerelease: false
 
-      # Upload the created zip file as a release asset
+      # Upload the generated zip file as a release asset
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
