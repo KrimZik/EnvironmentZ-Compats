@@ -15,6 +15,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Read changelog from file
+        id: changelog
+        run: |
+          if [ -f CHANGELOG.md ]; then
+            CHANGELOG=$(cat CHANGELOG.md | jq -Rs .)
+          else
+            CHANGELOG="\"No changelog provided.\""
+          fi
+          echo "CHANGELOG=$CHANGELOG" >> $GITHUB_ENV
+
       - name: Download release assets
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -75,17 +85,12 @@ jobs:
 
       - name: Generate metadata JSON
         run: |
-          CHANGELOG="${{ github.event.release.body }}"
-          if [ -z "$CHANGELOG" ]; then
-            CHANGELOG="No changelog provided."
-          fi
-
           DEPENDENCIES='[{"dependency_type": "required", "project_id": "environmentz"}]'
 
           JSON_PAYLOAD="release-assets/modrinth_metadata.json"
 
           echo "{
-            \"name\": \"Release $MOD_VERSION\",
+            \"name\": \"EnvironmentZCompats $MOD_VERSION + Extras\",
             \"version_number\": \"$MOD_VERSION\",
             \"game_versions\": [\"$MC_VERSION\"],
             \"loaders\": [\"minecraft\"],
@@ -94,30 +99,42 @@ jobs:
             \"primary_file\": \"$(basename $FILE)\",
             \"file_parts\": [\"$(basename $FILE)\"],
             \"dependencies\": $DEPENDENCIES,
-            \"changelog\": \"$(echo \"$CHANGELOG\" | jq -Rsa .)\"
+            \"changelog\": ${{ env.CHANGELOG }}
           }" > "$JSON_PAYLOAD"
 
       - name: Upload to Modrinth
         run: |
           for FILE in ${{ env.ZIP_FILES }}; do
             echo "Uploading $FILE to Modrinth..."
-            RESPONSE=$(curl -X POST "https://api.modrinth.com/v2/version" \
-              -H "Authorization: ${{ secrets.MODRINTH_API_KEY }}" \
-              -H "Content-Type: multipart/form-data" \
-              -F "data=@release-assets/modrinth_metadata.json;type=application/json" \
-              -F "primary_file=@$FILE" -w "%{http_code}" -o upload_response.json)
+            
+            ATTEMPTS=0
+            MAX_RETRIES=3
+            while [ $ATTEMPTS -lt $MAX_RETRIES ]; do
+              RESPONSE=$(curl -X POST "https://api.modrinth.com/v2/version" \
+                -H "Authorization: ${{ secrets.MODRINTH_API_KEY }}" \
+                -H "Content-Type: multipart/form-data" \
+                -F "data=@release-assets/modrinth_metadata.json;type=application/json" \
+                -F "primary_file=@$FILE" -w "%{http_code}" -o upload_response.json)
+              
+              HTTP_STATUS=$(tail -n1 <<< "$RESPONSE")
 
-            HTTP_STATUS=$(tail -n1 <<< "$RESPONSE")
+              if [[ "$HTTP_STATUS" == "502" ]]; then
+                echo "⚠️ ERROR: Received 502 Bad Gateway from Modrinth. Retrying in 10 seconds..."
+                sleep 10
+                ATTEMPTS=$((ATTEMPTS + 1))
+                continue
+              elif [[ "$HTTP_STATUS" != "200" && "$HTTP_STATUS" != "201" ]]; then
+                echo "❌ ERROR: Upload failed with status code $HTTP_STATUS"
+                cat upload_response.json
+                exit 1
+              else
+                echo "✅ Successfully uploaded $FILE to Modrinth"
+                break
+              fi
+            done
 
-            if [[ "$HTTP_STATUS" == "502" ]]; then
-              echo "⚠️ ERROR: Received 502 Bad Gateway from Modrinth. Retrying in 10 seconds..."
-              sleep 10
-              continue
-            elif [[ "$HTTP_STATUS" != "200" && "$HTTP_STATUS" != "201" ]]; then
-              echo "❌ ERROR: Upload failed with status code $HTTP_STATUS"
-              cat upload_response.json
+            if [ $ATTEMPTS -ge $MAX_RETRIES ]; then
+              echo "❌ ERROR: Failed after $MAX_RETRIES attempts"
               exit 1
             fi
-
-            echo "✅ Successfully uploaded $FILE to Modrinth"
           done
