@@ -10,5 +10,19 @@
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
+    },
+    "nethersdelight:blackstone_furnace": {
+        "property": "lit",
+        "max_count": 6,
+        "1": 0.9,
+        "6": 0.6,
+        "9": 0.3
+    },
+    "nethersdelight:blackstone_blast_furnace": {
+        "property": "lit",
+        "max_count": 6,
+        "1": 0.9,
+        "6": 0.6,
+        "9": 0.3
     }
 }
