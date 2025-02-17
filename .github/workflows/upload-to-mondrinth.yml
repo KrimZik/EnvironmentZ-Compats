@@ -110,8 +110,11 @@ jobs:
             ATTEMPTS=0
             MAX_RETRIES=3
             while [ $ATTEMPTS -lt $MAX_RETRIES ]; do
+              USER_AGENT="${{ github.repository_owner }}/EnvironmentZCompats/${{ env.MOD_VERSION }} (github.com/${{ github.repository_owner }})"
+
               RESPONSE=$(curl -X POST "https://api.modrinth.com/v2/version" \
-                -H "Authorization: ${{ secrets.MODRINTH_API_KEY }}" \
+                -H "Authorization: Bearer ${{ secrets.MODRINTH_PAT }}" \
+                -H "User-Agent: $USER_AGENT" \
                 -H "Content-Type: multipart/form-data" \
                 -F "data=@release-assets/modrinth_metadata.json;type=application/json" \
                 -F "primary_file=@$FILE" -w "%{http_code}" -o upload_response.json)
