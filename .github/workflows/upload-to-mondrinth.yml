@@ -1,56 +1,109 @@
-for FILE in ${{ env.ZIP_FILES }}; do
-  echo "Processing $FILE..."
+name: Upload to Modrinth
+permissions:
+  contents: read
 
-  MOD_VERSION=$(echo "$FILE" | grep -oP 'EnvironmentZCompat-\K[\d]+\.[\d]+\.[\d]+(?=-)')
-  MC_VERSION=$(echo "$FILE" | grep -oP '[\d]+\.[\d]+\.[\d]+(?=\.zip)')
+on:
+  workflow_run:
+    workflows: ["Create Release Zip"]  # Runs after release-zip.yml
+    types:
+      - completed
 
-  if [ -z "$MOD_VERSION" ] || [ -z "$MC_VERSION" ]; then
-    echo "❌ ERROR: Failed to extract version numbers from $FILE"
-    exit 1
-  fi
+jobs:
+  upload-to-modrinth:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'
 
-  echo "✅ Extracted versions: Mod Version: $MOD_VERSION, Minecraft Version: $MC_VERSION"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-  # Check if this version is already uploaded
-  if echo "${{ env.EXISTING_VERSIONS }}" | grep -q "\"version_number\": \"$MOD_VERSION\""; then
-    echo "⚠️ Skipping already uploaded version: $MOD_VERSION for Minecraft $MC_VERSION"
-    continue
-  fi
+      - name: Download release assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p release-assets
+          RELEASE_ID=$(curl -s -H "Authorization: token $GH_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/latest" \
+            | jq -r '.id')
 
-  # Extract file name without path
-  FILE_NAME=$(basename "$FILE")
+          if [[ "$RELEASE_ID" == "null" || -z "$RELEASE_ID" ]]; then
+            echo "❌ ERROR: No release found."
+            exit 1
+          fi
 
-  # Ensure changelog is not empty
-  CHANGELOG="${{ github.event.release.body }}"
-  if [ -z "$CHANGELOG" ]; then
-    CHANGELOG="No changelog provided."
-  fi
+          ASSETS=$(curl -s -H "Authorization: token $GH_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/$RELEASE_ID/assets" \
+            | jq -r '.[].browser_download_url')
 
-  # Define dependencies array with EnvironmentZ as required
-  DEPENDENCIES='[{"dependency_type": "required", "project_id": "environmentz"}]'
+          if [ -z "$ASSETS" ]; then
+            echo "❌ ERROR: No assets found for this release."
+            exit 1
+          fi
 
-  # Prepare JSON metadata file
-  JSON_PAYLOAD="release-assets/modrinth_metadata.json"
-  echo '{
-    "name": "Release '"$MOD_VERSION"'",
-    "version_number": "'"$MOD_VERSION"'",
-    "game_versions": ["'"$MC_VERSION"'"],
-    "loaders": ["minecraft"],
-    "version_type": "release",
-    "project_id": "'"${{ secrets.MODRINTH_PROJECT_ID }}"'",
-    "primary_file": "'"$FILE_NAME"'",
-    "file_parts": ["'"$FILE_NAME"'"],
-    "dependencies": '"$DEPENDENCIES"',
-    "changelog": "'"$CHANGELOG"'"
-  }' > "$JSON_PAYLOAD"
+          for URL in $ASSETS; do
+            wget -P release-assets/ "$URL"
+          done
 
-  # Upload to Modrinth with correctly formatted JSON
-  echo "Uploading $FILE to Modrinth..."
-  curl -X POST "https://api.modrinth.com/v2/version" \
-    -H "Authorization: ${{ secrets.MODRINTH_API_KEY }}" \
-    -H "Content-Type: multipart/form-data" \
-    -F "data=@$JSON_PAYLOAD;type=application/json" \
-    -F "primary_file=@$FILE"
+          ls -l release-assets  # Debugging
 
-  echo "✅ Successfully uploaded $FILE to Modrinth"
-done
+      - name: Find valid ZIP files
+        id: find_zips
+        run: |
+          ZIP_FILES=$(ls release-assets/EnvironmentZCompat-*-*.zip 2>/dev/null || echo "")
+
+          if [ -z "$ZIP_FILES" ]; then
+            echo "❌ ERROR: No valid zip files found."
+            exit 1
+          fi
+
+          echo "ZIP_FILES<<EOF" >> $GITHUB_ENV
+          echo "$ZIP_FILES" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Upload to Modrinth
+        run: |
+          for FILE in ${{ env.ZIP_FILES }}; do
+            echo "Processing $FILE..."
+
+            MOD_VERSION=$(echo "$FILE" | grep -oP 'EnvironmentZCompat-\K[\d]+\.[\d]+\.[\d]+(?=-)')
+            MC_VERSION=$(echo "$FILE" | grep -oP '[\d]+\.[\d]+\.[\d]+(?=\.zip)')
+
+            if [ -z "$MOD_VERSION" ] || [ -z "$MC_VERSION" ]; then
+              echo "❌ ERROR: Failed to extract version numbers from $FILE"
+              exit 1
+            fi
+
+            echo "✅ Extracted versions: Mod Version: $MOD_VERSION, Minecraft Version: $MC_VERSION"
+
+            FILE_NAME=$(basename "$FILE")
+
+            CHANGELOG="${{ github.event.release.body }}"
+            if [ -z "$CHANGELOG" ]; then
+              CHANGELOG="No changelog provided."
+            fi
+
+            DEPENDENCIES='[{"dependency_type": "required", "project_id": "environmentz"}]'
+
+            JSON_PAYLOAD="release-assets/modrinth_metadata.json"
+            echo '{
+              "name": "Release '"$MOD_VERSION"'",
+              "version_number": "'"$MOD_VERSION"'",
+              "game_versions": ["'"$MC_VERSION"'"],
+              "loaders": ["minecraft"],
+              "version_type": "release",
+              "project_id": "'"${{ secrets.MODRINTH_PROJECT_ID }}"'",
+              "primary_file": "'"$FILE_NAME"'",
+              "file_parts": ["'"$FILE_NAME"'"],
+              "dependencies": '"$DEPENDENCIES"',
+              "changelog": "'"$CHANGELOG"'"
+            }' > "$JSON_PAYLOAD"
+
+            echo "Uploading $FILE to Modrinth..."
+            curl -X POST "https://api.modrinth.com/v2/version" \
+              -H "Authorization: ${{ secrets.MODRINTH_API_KEY }}" \
+              -H "Content-Type: multipart/form-data" \
+              -F "data=@$JSON_PAYLOAD;type=application/json" \
+              -F "primary_file=@$FILE"
+
+            echo "✅ Successfully uploaded $FILE to Modrinth"
+          done
