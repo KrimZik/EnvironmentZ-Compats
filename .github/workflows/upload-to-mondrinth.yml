@@ -4,7 +4,7 @@ permissions:
 
 on:
   workflow_run:
-    workflows: ["Create Release Zip"]
+    workflows: ["Create Release Zip"]  # Runs after release-zip.yml
     types:
       - completed
 
@@ -14,14 +14,17 @@ jobs:
     if: github.event.workflow_run.conclusion == 'success'
 
     steps:
+      # 1️⃣ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 2️⃣ Download release assets from GitHub
       - name: Download release assets
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p release-assets
+          
           RELEASE_ID=$(curl -s -H "Authorization: token $GH_TOKEN" \
             "https://api.github.com/repos/${{ github.repository }}/releases/latest" \
             | jq -r '.id')
@@ -46,6 +49,7 @@ jobs:
 
           ls -l release-assets  # Debugging
 
+      # 3️⃣ Find valid ZIP files
       - name: Find valid ZIP files
         id: find_zips
         run: |
@@ -60,11 +64,13 @@ jobs:
           echo "$ZIP_FILES" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
+      # 4️⃣ Upload ZIPs to Modrinth
       - name: Upload to Modrinth
         run: |
           for FILE in ${{ env.ZIP_FILES }}; do
             echo "Processing $FILE..."
 
+            # Extract Mod Version & Minecraft Version from filename
             MOD_VERSION=$(echo "$FILE" | grep -oP 'EnvironmentZCompat-\K[\d]+\.[\d]+\.[\d]+(?=-)')
             MC_VERSION=$(echo "$FILE" | grep -oP '[\d]+\.[\d]+\.[\d]+(?=\.zip)')
 
