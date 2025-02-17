@@ -4,25 +4,21 @@ permissions:
 
 on:
   workflow_run:
-    workflows: ["Create Release Zip"]  # Wait for release-zip.yml to finish
+    workflows: ["Create Release Zip"]
     types:
       - completed
 
 jobs:
   upload-to-modrinth:
     runs-on: ubuntu-latest
-    if: github.event.workflow_run.conclusion == 'success'  # Only run if the previous workflow succeeds
+    if: github.event.workflow_run.conclusion == 'success'
 
     steps:
       # 1️⃣ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2️⃣ Wait for Release ZIP Workflow to complete
-      - name: Wait for previous workflow
-        run: echo "✅ Previous workflow completed successfully, proceeding..."
-
-      # 3️⃣ Download all release assets (ZIP files)
+      # 2️⃣ Download the ZIP file from GitHub Release
       - name: Download release assets
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -30,13 +26,8 @@ jobs:
           mkdir -p release-assets
           
           RELEASE_ID=$(curl -s -H "Authorization: token $GH_TOKEN" \
-            "https://api.github.com/repos/${{ github.repository }}/releases/tags/${{ github.event.workflow_run.head_branch }}" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/latest" \
             | jq -r '.id')
-
-          if [ -z "$RELEASE_ID" ] || [ "$RELEASE_ID" == "null" ]; then
-            echo "❌ ERROR: No release found for tag ${{ github.event.workflow_run.head_branch }}"
-            exit 1
-          fi
 
           ASSETS=$(curl -s -H "Authorization: token $GH_TOKEN" \
             "https://api.github.com/repos/${{ github.repository }}/releases/$RELEASE_ID/assets" \
@@ -47,20 +38,16 @@ jobs:
             exit 1
           fi
 
-          echo "✅ Found assets:"
-          echo "$ASSETS"
-
           for URL in $ASSETS; do
             wget -P release-assets/ "$URL"
           done
 
           ls -l release-assets  # Debugging: List downloaded files
 
-      # 4️⃣ Get existing uploaded versions from Modrinth
+      # 3️⃣ Get existing uploaded versions from Modrinth
       - name: Fetch existing versions from Modrinth
         id: fetch_existing_versions
         run: |
-          echo "Fetching existing versions from Modrinth..."
           RESPONSE=$(curl -s -X GET "https://api.modrinth.com/v2/project/${{ secrets.MODRINTH_PROJECT_ID }}/version" \
             -H "Authorization: ${{ secrets.MODRINTH_API_KEY }}" \
             -H "Accept: application/json")
@@ -69,44 +56,30 @@ jobs:
           echo "$RESPONSE" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-      # 5️⃣ Find all valid release ZIP files and validate format
+      # 4️⃣ Find and Validate ZIP Files
       - name: Find valid ZIP files
         id: find_zips
         run: |
-          TAG_NAME="${{ github.event.workflow_run.head_branch }}"
-          ZIP_FILES=$(ls release-assets/EnvironmentZCompat-${TAG_NAME}-*.zip 2>/dev/null || echo "")
+          ZIP_FILES=$(ls release-assets/EnvironmentZCompat-*-*.zip 2>/dev/null || echo "")
 
           if [ -z "$ZIP_FILES" ]; then
-            echo "❌ ERROR: No valid zip files found in release-assets/"
+            echo "❌ ERROR: No valid zip files found."
             exit 1
           fi
-
-          echo "✅ Found ZIP files:"
-          echo "$ZIP_FILES"
-
-          # Validate ZIP format: Must have both Mod Version & MC Version
-          for FILE in $ZIP_FILES; do
-            if [[ ! $FILE =~ EnvironmentZCompat-[0-9]+\.[0-9]+\.[0-9]+-[0-9]+\.[0-9]+\.[0-9]+\.zip$ ]]; then
-              echo "❌ ERROR: Invalid file format: $FILE (Must follow EnvironmentZCompat-<mod_version>-<mc_version>.zip)"
-              exit 1
-            fi
-          done
 
           echo "ZIP_FILES<<EOF" >> $GITHUB_ENV
           echo "$ZIP_FILES" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-      # 6️⃣ Upload only new ZIPs to Modrinth
-      - name: Upload new ZIPs to Modrinth
+      # 5️⃣ Upload new ZIPs to Modrinth (Includes `dependencies`)
+      - name: Upload ZIPs to Modrinth
         run: |
           for FILE in ${{ env.ZIP_FILES }}; do
             echo "Processing $FILE..."
 
-            # Extract Mod Version & Minecraft Version from filename
             MOD_VERSION=$(echo "$FILE" | grep -oP 'EnvironmentZCompat-\K[\d]+\.[\d]+\.[\d]+(?=-)')
             MC_VERSION=$(echo "$FILE" | grep -oP '[\d]+\.[\d]+\.[\d]+(?=\.zip)')
 
-            # Validate extracted versions
             if [ -z "$MOD_VERSION" ] || [ -z "$MC_VERSION" ]; then
               echo "❌ ERROR: Failed to extract version numbers from $FILE"
               exit 1
@@ -120,25 +93,27 @@ jobs:
               continue
             fi
 
-            # Upload to Modrinth
+            # Extract file name without path for `file_parts`
+            FILE_NAME=$(basename "$FILE")
+
+            # Define dependencies array with EnvironmentZ as required
+            DEPENDENCIES='[{"dependency_type": "required", "project_id": "environmentz"}]'
+
+            # Upload to Modrinth (Includes `dependencies`, `primary_file`, and `file_parts`)
             echo "Uploading $FILE to Modrinth..."
             curl -X POST "https://api.modrinth.com/v2/version" \
               -H "Authorization: ${{ secrets.MODRINTH_API_KEY }}" \
-              -H "Content-Type: application/json" \
               -H "Accept: application/json" \
-              --data '{
-                "name": "Release '"$MOD_VERSION"'",
-                "version_number": "'"$MOD_VERSION"'",
-                "game_versions": ["'"$MC_VERSION"'"],
-                "dependencies": [],
-                "files": [{
-                  "path": "'"$FILE"'",
-                  "primary": true
-                }],
-                "project_id": "'"${{ secrets.MODRINTH_PROJECT_ID }}"'",
-                "version_type": "release",
-                "changelog": "'"${{ github.event.workflow_run.head_branch }}"'"
-              }'
+              -F "name=Release $MOD_VERSION" \
+              -F "version_number=$MOD_VERSION" \
+              -F "game_versions=$MC_VERSION" \
+              -F "loaders=minecraft" \
+              -F "version_type=release" \
+              -F "project_id=${{ secrets.MODRINTH_PROJECT_ID }}" \
+              -F "primary_file=@$FILE" \
+              -F "file_parts=$FILE_NAME" \
+              -F "dependencies=$DEPENDENCIES" \
+              -F "changelog=${{ github.event.release.body }}"
 
             echo "✅ Successfully uploaded $FILE to Modrinth"
           done
