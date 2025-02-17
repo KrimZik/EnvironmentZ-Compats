@@ -1,395 +1,435 @@
 {
-    "betterend:violecite_lantern": {
+    "chipped:blue_paper_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:flavolite_lantern": {
+    "chipped:burning_coal_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:sulphuric_rock_lantern": {
+    "chipped:checkered_iron_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:virid_jadestone_lantern": {
+    "chipped:dark_blue_paper_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:azure_jadestone_lantern": {
+    "chipped:ender_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:sandy_jadestone_lantern": {
+    "chipped:green_paper_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:umbralith_lantern": {
+    "chipped:iron_bowl_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:andesite_lantern": {
+    "chipped:purple_paper_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:diorite_lantern": {
+    "chipped:red_paper_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:granite_lantern": {
+    "chipped:small_green_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:quartz_lantern": {
+    "chipped:white_paper_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:purpur_lantern": {
+    "chipped:wooden_cage_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:end_stone_lantern": {
+    "chipped:wrought_iron_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:thallasium_bulb_lantern": {
+    "chipped:yellow_tube_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:thallasium_bulb_lantern_white": {
+    "chipped:blue_paper_soul_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:thallasium_bulb_lantern_gray": {
+    "chipped:blue_tube_soul_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:thallasium_bulb_lantern_light_gray": {
+    "chipped:checkered_iron_soul_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:thallasium_bulb_lantern_black": {
+    "chipped:golden_paper_soul_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:thallasium_bulb_lantern_blue": {
+    "chipped:gray_paper_soul_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:thallasium_bulb_lantern_lime": {
+    "chipped:iron_bowl_soul_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:thallasium_bulb_lantern_magenta": {
+    "chipped:lime_paper_soul_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:thallasium_bulb_lantern_red": {
+    "chipped:orange_paper_soul_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:thallasium_bulb_lantern_orange": {
+    "chipped:small_red_soul_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:thallasium_bulb_lantern_purple": {
+    "chipped:wooden_cage_soul_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:thallasium_bulb_lantern_cyan": {
+    "chipped:yellow_paper_soul_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:thallasium_bulb_lantern_brown": {
+    "chipped:big_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:thallasium_bulb_lantern_green": {
+    "chipped:donut_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:thallasium_bulb_lantern_yellow": {
+    "chipped:tall_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:thallasium_bulb_lantern_pink": {
+    "chipped:wide_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:terminite_bulb_lantern": {
+    "chipped:big_soul_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:terminite_bulb_lantern_white": {
+    "chipped:donut_soul_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:terminite_bulb_lantern_gray": {
+    "chipped:tall_soul_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:terminite_bulb_lantern_light_gray": {
+    "chipped:wide_soul_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:terminite_bulb_lantern_black": {
+    "chipped:edged_glowstone_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:terminite_bulb_lantern_blue": {
+    "chipped:fancy_glowstone_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:terminite_bulb_lantern_lime": {
+    "chipped:framed_glowstone_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:terminite_bulb_lantern_magenta": {
+    "chipped:glowstone_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:terminite_bulb_lantern_red": {
+    "chipped:ornate_glowstone_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:terminite_bulb_lantern_orange": {
+    "chipped:edged_shroomlight_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:terminite_bulb_lantern_purple": {
+    "chipped:fancy_shroomlight_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:terminite_bulb_lantern_cyan": {
+    "chipped:framed_shroomlight_lantern": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:terminite_bulb_lantern_brown": {
+    "chipped:ornate_shroomlight_lantern": {
         "max_count": 10,
         "1": 0.3,
-            "6": 0.2,
+        "6": 0.2,
+        "9": 0.1
+    },
+    "chipped:shroomlight_lantern": {
+        "max_count": 10,
+        "1": 0.3,
+        "6": 0.2,
+        "9": 0.1
+    },
+    "chipped:acacia_torch": {
+        "max_count": 10,
+        "1": 0.3,
+        "6": 0.2,
+        "9": 0.1
+    },
+    "chipped:acacia_wall_torch": {
+        "max_count": 10,
+        "1": 0.3,
+        "6": 0.2,
+        "9": 0.1
+    },
+    "chipped:birch_torch": {
+        "max_count": 10,
+        "1": 0.3,
+        "6": 0.2,
+        "9": 0.1
+    },
+    "chipped:birch_wall_torch": {
+        "max_count": 10,
+        "1": 0.3,
+        "6": 0.2,
         "9": 0.1
     },
-    "betterend:terminite_bulb_lantern_green": {
+    "chipped:crimson_torch": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:terminite_bulb_lantern_yellow": {
+    "chipped:crimson_wall_torch": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:terminite_bulb_lantern_pink": {
+    "chipped:dark_oak_torch": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:terminite_bulb_lantern_light_blue": {
+    "chipped:dark_oak_wall_torch": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:iron_bulb_lantern": {
+    "chipped:glow_torch": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:iron_bulb_lantern_white": {
+    "chipped:glow_wall_torch": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:iron_bulb_lantern_gray": {
+    "chipped:iron_torch": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:iron_bulb_lantern_light_gray": {
+    "chipped:iron_wall_torch": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:iron_bulb_lantern_black": {
+    "chipped:jungle_torch": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:iron_bulb_lantern_blue": {
+    "chipped:jungle_wall_torch": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:iron_bulb_lantern_lime": {
+    "chipped:spruce_torch": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:iron_bulb_lantern_magenta": {
+    "chipped:spruce_wall_torch": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:iron_bulb_lantern_red": {
+    "chipped:warped_torch": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:iron_bulb_lantern_orange": {
+    "chipped:warped_wall_torch": {
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:iron_bulb_lantern_purple": {
+    "chipped:blue_redstone_torch": {
+        "property": "lit",
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:iron_bulb_lantern_cyan": {
+    "chipped:blue_redstone_wall_torch": {
+        "property": "lit",
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:iron_bulb_lantern_brown": {
+    "chipped:crimson_redstone_torch": {
+        "property": "lit",
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:iron_bulb_lantern_green": {
+    "chipped:crimson_redstone_wall_torch": {
+        "property": "lit",
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:iron_bulb_lantern_yellow": {
+    "chipped:green_redstone_torch": {
+        "property": "lit",
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:iron_bulb_lantern_pink": {
+    "chipped:green_redstone_wall_torch": {
+        "property": "lit",
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:iron_bulb_lantern_light_blue": {
+    "chipped:lightstick_redstone_torch": {
+        "property": "lit",
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:filalux_lantern": {
+    "chipped:lightstick_redstone_wall_torch": {
+        "property": "lit",
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:blue_vine_lantern": {
+    "chipped:yellow_redstone_torch": {
+        "property": "lit",
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
     },
-    "betterend:amarantia_lantern": {
+    "chipped:yellow_redstone_wall_torch": {
+        "property": "lit",
         "max_count": 10,
         "1": 0.3,
         "6": 0.2,
