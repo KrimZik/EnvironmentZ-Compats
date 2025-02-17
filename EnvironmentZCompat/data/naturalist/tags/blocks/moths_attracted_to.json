@@ -1,0 +1,629 @@
+{
+    "replace": false,
+    "values": [
+        {
+            "id": "amendments:wall_lantern",
+            "required": false
+        },
+        {
+            "id": "beachparty:palm_wall_torch",
+            "required": false
+        },
+        {
+            "id": "beachparty:palm_torch",
+            "required": false
+        },
+        {
+            "id": "beachparty:palm_tall_torch",
+            "required": false
+        },
+        {
+            "id": "betternether:willow_torch",
+            "required": false
+        },
+        {
+            "id": "betternether:cincinnasite_lantern_small",
+            "required": false
+        },
+        {
+            "id": "betternether:cincinnasite_lantern",
+            "required": false
+        },
+        {
+            "id": "betternether:whispering_gourd_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:violecite_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:flavolite_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:sulphuric_rock_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:virid_jadestone_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:azure_jadestone_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:sandy_jadestone_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:umbralith_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:andesite_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:diorite_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:granite_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:quartz_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:purpur_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:end_stone_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_white",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_gray",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_light_gray",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_black",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_blue",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_lime",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_magenta",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_red",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_orange",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_purple",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_cyan",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_brown",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_green",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_yellow",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_pink",
+            "required": false
+        },
+        {
+            "id": "betterend:thallasium_bulb_lantern_light_blue",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_white",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_gray",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_light_gray",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_black",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_blue",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_lime",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_magenta",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_red",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_orange",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_purple",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_cyan",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_brown",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_green",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_yellow",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_pink",
+            "required": false
+        },
+        {
+            "id": "betterend:terminite_bulb_lantern_light_blue",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_white",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_gray",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_light_gray",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_black",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_blue",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_lime",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_magenta",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_red",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_orange",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_purple",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_cyan",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_brown",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_green",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_yellow",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_pink",
+            "required": false
+        },
+        {
+            "id": "betterend:iron_bulb_lantern_light_blue",
+            "required": false
+        },
+        {
+            "id": "betterend:filalux_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:blue_vine_lantern",
+            "required": false
+        },
+        {
+            "id": "betterend:amarantia_lantern",
+            "required": false
+        },
+        {
+            "id": "ribbits:swamp_lantern",
+            "required": false
+        },
+        {
+            "id": "nethersdelight:propelplant_torch",
+            "required": false
+        },
+        {
+            "id": "decorative_blocks:chandelier",
+            "required": false
+        },
+        {
+            "id": "decorative_blocks:soul_chandelier",
+            "required": false
+        },
+        {
+            "id": "decorative_blocks:brazier",
+            "required": false
+        },
+        {
+            "id": "decorative_blocks:soul_brazier",
+            "required": false
+        },
+        {
+            "id": "oxidized:copper_lantern",
+            "required": false
+        },
+        {
+            "id": "meadow:oil_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:blue_paper_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:burning_coal_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:checkered_iron_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:dark_blue_paper_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:ender_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:green_paper_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:iron_bowl_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:purple_paper_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:red_paper_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:small_green_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:white_paper_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:wooden_cage_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:wrought_iron_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:yellow_tube_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:blue_paper_soul_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:blue_tube_soul_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:checkered_iron_soul_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:golden_paper_soul_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:gray_paper_soul_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:iron_bowl_soul_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:lime_paper_soul_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:orange_paper_soul_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:small_red_soul_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:wooden_cage_soul_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:yellow_paper_soul_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:big_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:donut_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:tall_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:wide_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:big_soul_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:donut_soul_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:tall_soul_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:wide_soul_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:edged_glowstone_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:fancy_glowstone_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:framed_glowstone_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:glowstone_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:ornate_glowstone_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:edged_shroomlight_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:fancy_shroomlight_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:framed_shroomlight_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:ornate_shroomlight_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:shroomlight_lantern",
+            "required": false
+        },
+        {
+            "id": "chipped:acacia_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:acacia_wall_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:birch_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:birch_wall_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:crimson_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:crimson_wall_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:dark_oak_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:dark_oak_wall_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:glow_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:glow_wall_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:iron_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:iron_wall_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:jungle_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:jungle_wall_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:spruce_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:spruce_wall_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:warped_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:warped_wall_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:blue_redstone_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:blue_redstone_wall_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:crimson_redstone_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:crimson_redstone_wall_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:green_redstone_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:green_redstone_wall_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:lightstick_redstone_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:lightstick_redstone_wall_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:yellow_redstone_torch",
+            "required": false
+        },
+        {
+            "id": "chipped:yellow_redstone_wall_torch",
+            "required": false
+        },
+        {
+            "id": "mcwbridges:bridge_torch",
+            "required": false
+        },
+        {
+            "id": "mcwbridges:bridge_lantern",
+            "required": false
+        }
+    ]
+}
