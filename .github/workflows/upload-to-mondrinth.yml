@@ -24,6 +24,14 @@ jobs:
             CHANGELOG="\"No changelog provided.\""
           fi
           echo "CHANGELOG=$CHANGELOG" >> $GITHUB_ENV
+      - name: Debug Secrets
+        run: |
+          if [ -z "${{ secrets.MODRINTH_PAT }}" ]; then
+            echo "❌ ERROR: MODRINTH_PAT is not set in GitHub Secrets!"
+            exit 1
+          else
+            echo "✅ MODRINTH_PAT is set."
+          fi
 
       - name: Download release assets
         env:
