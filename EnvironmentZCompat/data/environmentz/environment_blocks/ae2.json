@@ -1,0 +1,9 @@
+{
+    "ae2:vibration_chamber": {
+        "property": "active",
+        "max_count": 3,
+        "1": 1,
+        "2": 0.8,
+        "3": 0.4
+    }
+}
