@@ -150,7 +150,7 @@ jobs:
 
           # Upload the version to Modrinth
           RESPONSE=$(curl -X POST "$MODRINTH_API_URL" \
-            -H "Authorization: Bearer ${{ secrets.MODRINTH_PAT }}" \
+            -H "Authorization: ${{ secrets.MODRINTH_PAT }}" \
             -H "User-Agent: $USER_AGENT" \
             -H "Content-Type: multipart/form-data" \
             -F "data=$METADATA" \
