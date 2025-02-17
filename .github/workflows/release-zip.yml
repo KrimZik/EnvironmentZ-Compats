@@ -3,50 +3,27 @@ name: Create Release Zip
 on:
   push:
     tags:
-      - 'v*.*.*'  # Adjust the pattern if needed
+      - 'v*.*.*'  # Adjust the tag pattern as needed
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      # Checkout the repository at the tag that triggered the workflow
+      # Check out the repository at the pushed tag
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
 
-      # Create a temporary directory and copy the contents of EnvironmentZCompat into it.
-      # Then zip the contents of the temporary directory, ensuring that the zip's root
-      # contains only the files/folders from EnvironmentZCompat.
-      - name: Prepare zip archive from EnvironmentZCompat contents
+      # Change directory to EnvironmentZCompat and zip its contents
+      - name: Zip EnvironmentZCompat folder contents
         run: |
-          mkdir temp
-          cp -r EnvironmentZCompat/* temp/
-          cd temp
-          zip -r ../environmentz-compat.zip .
-          cd ..
-          rm -rf temp
+          cd EnvironmentZCompat
+          zip -r ../environmentz-compat.zip *
 
       # Create a GitHub Release using the pushed tag
       - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
-
-      # Upload the generated zip file as a release asset
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: environmentz-compat.zip
-          asset_name: environmentz-compat.zip
-          asset_content_type: application/zip
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN
