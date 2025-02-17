@@ -1,0 +1,45 @@
+name: Create Release Zip
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # Trigger on tags like v1.20.1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code at the tag
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          # Ensure you're checking out the tag reference
+          ref: ${{ github.ref }}
+
+      # Zip the EnvironmentZCompat folder
+      - name: Zip the EnvironmentZCompat folder
+        run: zip -r EnvironmentZCompat.zip EnvironmentZCompat
+
+      # Create a GitHub Release
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+
+      # Upload the zip as a release asset
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: environmentz-compat.zip
+          asset_name: environmentz-compat.zip
+          asset_content_type: application/zip
