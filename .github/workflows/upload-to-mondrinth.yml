@@ -3,30 +3,38 @@ permissions:
   contents: read
 
 on:
-  release:
-    types: [published, edited]  # Runs when a release is published or assets are added
+  workflow_run:
+    workflows: ["Create Release Zip"]  # Wait for release-zip.yml to finish
+    types:
+      - completed
 
 jobs:
   upload-to-modrinth:
     runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'  # Only run if the previous workflow succeeds
 
     steps:
       # 1️⃣ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2️⃣ Fetch release assets using GitHub API instead of gh CLI
+      # 2️⃣ Wait for Release ZIP Workflow to complete
+      - name: Wait for previous workflow
+        run: echo "✅ Previous workflow completed successfully, proceeding..."
+
+      # 3️⃣ Download all release assets (ZIP files)
       - name: Download release assets
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p release-assets
+          
           RELEASE_ID=$(curl -s -H "Authorization: token $GH_TOKEN" \
-            "https://api.github.com/repos/${{ github.repository }}/releases/tags/${{ github.event.release.tag_name }}" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/tags/${{ github.event.workflow_run.head_branch }}" \
             | jq -r '.id')
 
           if [ -z "$RELEASE_ID" ] || [ "$RELEASE_ID" == "null" ]; then
-            echo "❌ ERROR: No release found for tag ${{ github.event.release.tag_name }}"
+            echo "❌ ERROR: No release found for tag ${{ github.event.workflow_run.head_branch }}"
             exit 1
           fi
 
@@ -48,7 +56,7 @@ jobs:
 
           ls -l release-assets  # Debugging: List downloaded files
 
-      # 3️⃣ Get existing uploaded versions from Modrinth
+      # 4️⃣ Get existing uploaded versions from Modrinth
       - name: Fetch existing versions from Modrinth
         id: fetch_existing_versions
         run: |
@@ -61,11 +69,11 @@ jobs:
           echo "$RESPONSE" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-      # 4️⃣ Find all valid release ZIP files
+      # 5️⃣ Find all valid release ZIP files
       - name: Find valid ZIP files
         id: find_zips
         run: |
-          TAG_NAME="${{ github.event.release.tag_name }}"
+          TAG_NAME="${{ github.event.workflow_run.head_branch }}"
           ZIP_FILES=$(ls release-assets/EnvironmentZCompat-${TAG_NAME}-*.zip 2>/dev/null || echo "")
 
           if [ -z "$ZIP_FILES" ]; then
@@ -79,7 +87,7 @@ jobs:
           echo "$ZIP_FILES" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-      # 5️⃣ Upload only new ZIPs to Modrinth
+      # 6️⃣ Upload only new ZIPs to Modrinth
       - name: Upload new ZIPs to Modrinth
         run: |
           for FILE in ${{ env.ZIP_FILES }}; do
@@ -119,7 +127,7 @@ jobs:
                 }],
                 "project_id": "'"${{ secrets.MODRINTH_PROJECT_ID }}"'",
                 "version_type": "release",
-                "changelog": "'"${{ github.event.release.body }}"'"
+                "changelog": "'"${{ github.event.workflow_run.head_branch }}"'"
               }'
 
             echo "✅ Successfully uploaded $FILE to Modrinth"
