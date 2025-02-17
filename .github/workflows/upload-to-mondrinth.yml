@@ -19,7 +19,7 @@ jobs:
         id: changelog
         run: |
           if [ -f CHANGELOG.md ]; then
-            CHANGELOG=$(cat CHANGELOG.md | jq -Rs .)
+            CHANGELOG=$(jq -Rs . < CHANGELOG.md)
           else
             CHANGELOG="\"No changelog provided.\""
           fi
@@ -96,8 +96,8 @@ jobs:
             \"loaders\": [\"minecraft\"],
             \"version_type\": \"release\",
             \"project_id\": \"${{ secrets.MODRINTH_PROJECT_ID }}\",
-            \"primary_file\": \"$(basename $FILE)\",
-            \"file_parts\": [\"$(basename $FILE)\"],
+            \"primary_file\": \"$(basename "$FILE")\",
+            \"file_parts\": [\"$(basename "$FILE")\"],
             \"dependencies\": $DEPENDENCIES,
             \"changelog\": ${{ env.CHANGELOG }}
           }" > "$JSON_PAYLOAD"
