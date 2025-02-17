@@ -4,7 +4,7 @@ permissions:
 
 on:
   workflow_run:
-    workflows: ["Create Release Zip"]  # Runs after release-zip.yml
+    workflows: ["Create Release Zip"]
     types:
       - completed
 
@@ -14,9 +14,11 @@ jobs:
     if: github.event.workflow_run.conclusion == 'success'
 
     steps:
+      # 1️⃣ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 2️⃣ Download release assets
       - name: Download release assets
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -46,6 +48,7 @@ jobs:
 
           ls -l release-assets  # Debugging
 
+      # 3️⃣ Find valid ZIP files
       - name: Find valid ZIP files
         id: find_zips
         run: |
@@ -60,6 +63,7 @@ jobs:
           echo "$ZIP_FILES" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
+      # 4️⃣ Upload ZIPs to Modrinth
       - name: Upload to Modrinth
         run: |
           for FILE in ${{ env.ZIP_FILES }}; do
@@ -77,26 +81,32 @@ jobs:
 
             FILE_NAME=$(basename "$FILE")
 
+            # Ensure changelog is properly formatted
             CHANGELOG="${{ github.event.release.body }}"
             if [ -z "$CHANGELOG" ]; then
               CHANGELOG="No changelog provided."
             fi
 
+            # Define dependencies array with EnvironmentZ as required
             DEPENDENCIES='[{"dependency_type": "required", "project_id": "environmentz"}]'
 
+            # Generate JSON metadata file
             JSON_PAYLOAD="release-assets/modrinth_metadata.json"
-            echo '{
-              "name": "Release '"$MOD_VERSION"'",
-              "version_number": "'"$MOD_VERSION"'",
-              "game_versions": ["'"$MC_VERSION"'"],
+
+            cat <<EOF > "$JSON_PAYLOAD"
+            {
+              "name": "Release $MOD_VERSION",
+              "version_number": "$MOD_VERSION",
+              "game_versions": ["$MC_VERSION"],
               "loaders": ["minecraft"],
               "version_type": "release",
-              "project_id": "'"${{ secrets.MODRINTH_PROJECT_ID }}"'",
-              "primary_file": "'"$FILE_NAME"'",
-              "file_parts": ["'"$FILE_NAME"'"],
-              "dependencies": '"$DEPENDENCIES"',
-              "changelog": "'"$CHANGELOG"'"
-            }' > "$JSON_PAYLOAD"
+              "project_id": "${{ secrets.MODRINTH_PROJECT_ID }}",
+              "primary_file": "$FILE_NAME",
+              "file_parts": ["$FILE_NAME"],
+              "dependencies": $DEPENDENCIES,
+              "changelog": "$(echo "$CHANGELOG" | jq -Rsa .)"
+            }
+            EOF
 
             echo "Uploading $FILE to Modrinth..."
             curl -X POST "https://api.modrinth.com/v2/version" \
