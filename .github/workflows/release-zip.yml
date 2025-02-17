@@ -3,26 +3,26 @@ name: Create Release Zip
 on:
   push:
     tags:
-      - 'v*.*.*'  # Adjust this pattern if needed
+      - 'v*.*.*'  # Adjust the tag pattern as needed
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository code at the tag
+      # Checkout the repository at the pushed tag
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
 
-      # Navigate to the EnvironmentZCompat folder and zip only the desired files/folder
-      - name: Zip specific files
+      # Change into EnvironmentZCompat and zip only the desired items
+      - name: Zip specific files from EnvironmentZCompat
         run: |
           cd EnvironmentZCompat
           zip -r ../environmentz-compat.zip data icon.png pack.mcmeta
 
-      # Create a GitHub Release
+      # Create a GitHub Release using the pushed tag
       - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@v1
@@ -34,7 +34,7 @@ jobs:
           draft: false
           prerelease: false
 
-      # Upload the zip as a release asset
+      # Upload the created zip file as a release asset
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
