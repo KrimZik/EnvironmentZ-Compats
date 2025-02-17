@@ -1,24 +1,16 @@
 name: Upload to Modrinth
-permissions:
-  contents: read
 
-on:
-  workflow_run:
-    workflows: ["Create Release Zip"]  # Runs after release-zip.yml
-    types:
-      - completed
+on: 
+  workflow_dispatch
 
 jobs:
-  upload-to-modrinth:
+  upload:
     runs-on: ubuntu-latest
-    if: github.event.workflow_run.conclusion == 'success'
 
     steps:
-      # 1️⃣ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2️⃣ Download release assets from GitHub
       - name: Download release assets
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -49,7 +41,6 @@ jobs:
 
           ls -l release-assets  # Debugging
 
-      # 3️⃣ Find valid ZIP files
       - name: Find valid ZIP files
         id: find_zips
         run: |
@@ -60,62 +51,56 @@ jobs:
             exit 1
           fi
 
-          echo "ZIP_FILES<<EOF" >> $GITHUB_ENV
-          echo "$ZIP_FILES" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+          echo "ZIP_FILES=$ZIP_FILES" >> $GITHUB_ENV
 
-      # 4️⃣ Upload ZIPs to Modrinth
+      - name: Extract version information
+        id: extract_versions
+        run: |
+          FILE=$(echo $ZIP_FILES | head -n1)  # Take the first valid file
+          MOD_VERSION=$(echo "$FILE" | grep -oP 'EnvironmentZCompat-\K[\d]+\.[\d]+\.[\d]+(?=-)')
+          MC_VERSION=$(echo "$FILE" | grep -oP '[\d]+\.[\d]+\.[\d]+(?=\.zip)')
+
+          if [ -z "$MOD_VERSION" ] || [ -z "$MC_VERSION" ]; then
+            echo "❌ ERROR: Failed to extract version numbers from $FILE"
+            exit 1
+          fi
+
+          echo "MOD_VERSION=$MOD_VERSION" >> $GITHUB_ENV
+          echo "MC_VERSION=$MC_VERSION" >> $GITHUB_ENV
+          echo "✅ Extracted versions: Mod Version: $MOD_VERSION, Minecraft Version: $MC_VERSION"
+
+      - name: Generate metadata JSON
+        run: |
+          CHANGELOG="${{ github.event.release.body }}"
+          if [ -z "$CHANGELOG" ]; then
+            CHANGELOG="No changelog provided."
+          fi
+
+          DEPENDENCIES='[{"dependency_type": "required", "project_id": "environmentz"}]'
+
+          JSON_PAYLOAD="release-assets/modrinth_metadata.json"
+
+          echo "{
+            \"name\": \"Release $MOD_VERSION\",
+            \"version_number\": \"$MOD_VERSION\",
+            \"game_versions\": [\"$MC_VERSION\"],
+            \"loaders\": [\"minecraft\"],
+            \"version_type\": \"release\",
+            \"project_id\": \"${{ secrets.MODRINTH_PROJECT_ID }}\",
+            \"primary_file\": \"$(basename $FILE)\",
+            \"file_parts\": [\"$(basename $FILE)\"],
+            \"dependencies\": $DEPENDENCIES,
+            \"changelog\": \"$(echo \"$CHANGELOG\" | jq -Rsa .)\"
+          }" > "$JSON_PAYLOAD"
+
       - name: Upload to Modrinth
         run: |
           for FILE in ${{ env.ZIP_FILES }}; do
-            echo "Processing $FILE..."
-
-            # Extract Mod Version & Minecraft Version from filename
-            MOD_VERSION=$(echo "$FILE" | grep -oP 'EnvironmentZCompat-\K[\d]+\.[\d]+\.[\d]+(?=-)')
-            MC_VERSION=$(echo "$FILE" | grep -oP '[\d]+\.[\d]+\.[\d]+(?=\.zip)')
-
-            if [ -z "$MOD_VERSION" ] || [ -z "$MC_VERSION" ]; then
-              echo "❌ ERROR: Failed to extract version numbers from $FILE"
-              exit 1
-            fi
-
-            echo "✅ Extracted versions: Mod Version: $MOD_VERSION, Minecraft Version: $MC_VERSION"
-
-            FILE_NAME=$(basename "$FILE")
-
-            # Ensure changelog is properly formatted
-            CHANGELOG="${{ github.event.release.body }}"
-            if [ -z "$CHANGELOG" ]; then
-              CHANGELOG="No changelog provided."
-            fi
-
-            # Define dependencies array with EnvironmentZ as required
-            DEPENDENCIES='[{"dependency_type": "required", "project_id": "environmentz"}]'
-
-            # Generate JSON metadata file
-            JSON_PAYLOAD="release-assets/modrinth_metadata.json"
-
-            cat > "$JSON_PAYLOAD" <<EOF
-{
-  "name": "Release $MOD_VERSION",
-  "version_number": "$MOD_VERSION",
-  "game_versions": ["$MC_VERSION"],
-  "loaders": ["minecraft"],
-  "version_type": "release",
-  "project_id": "${{ secrets.MODRINTH_PROJECT_ID }}",
-  "primary_file": "$FILE_NAME",
-  "file_parts": ["$FILE_NAME"],
-  "dependencies": $DEPENDENCIES,
-  "changelog": "$(echo "$CHANGELOG" | jq -Rsa .)"
-}
-EOF
-
             echo "Uploading $FILE to Modrinth..."
             curl -X POST "https://api.modrinth.com/v2/version" \
               -H "Authorization: ${{ secrets.MODRINTH_API_KEY }}" \
               -H "Content-Type: multipart/form-data" \
-              -F "data=@$JSON_PAYLOAD;type=application/json" \
+              -F "data=@release-assets/modrinth_metadata.json;type=application/json" \
               -F "primary_file=@$FILE"
-
             echo "✅ Successfully uploaded $FILE to Modrinth"
           done
