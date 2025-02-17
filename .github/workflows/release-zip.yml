@@ -3,7 +3,7 @@ name: Create Release Zip
 on:
   push:
     tags:
-      - 'v*.*.*'  # Adjust tag pattern as needed
+      - '*.*.*'  # Adjust tag pattern as needed
 
 jobs:
   build:
