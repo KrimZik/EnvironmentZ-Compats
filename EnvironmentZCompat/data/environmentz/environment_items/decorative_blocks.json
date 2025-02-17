@@ -1,0 +1,14 @@
+{
+    "decorative_blocks:soul_chandelier": {
+        "temperature": 0.5
+    },
+    "decorative_blocks:chandelier": {
+        "temperature": 0.5
+    },
+    "decorative_blocks:brazier": {
+        "temperature": 1
+    },
+    "decorative_blocks:soul_brazier": {
+        "temperature": 1
+    }
+}

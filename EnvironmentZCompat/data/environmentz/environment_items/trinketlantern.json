@@ -1,0 +1,14 @@
+{
+    "trinketlantern:carry_lantern": {
+        "temperature": 0.5
+    },
+    "trinketlantern:carry_soul_lantern": {
+        "temperature": 0.5
+    },
+    "trinketlantern:carry_lantern_waterproof": {
+        "temperature": 0.5
+    },
+    "trinketlantern:carry_soul_lantern_waterproof": {
+        "temperature": 0.5
+    }
+}

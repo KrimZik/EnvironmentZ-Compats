@@ -1,398 +1,203 @@
 {
     "betterend:violecite_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:flavolite_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:sulphuric_rock_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:virid_jadestone_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:azure_jadestone_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:sandy_jadestone_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:umbralith_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:andesite_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:diorite_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:granite_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:quartz_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:purpur_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:end_stone_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:thallasium_bulb_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:thallasium_bulb_lantern_white": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:thallasium_bulb_lantern_gray": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:thallasium_bulb_lantern_light_gray": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:thallasium_bulb_lantern_black": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:thallasium_bulb_lantern_blue": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:thallasium_bulb_lantern_lime": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:thallasium_bulb_lantern_magenta": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:thallasium_bulb_lantern_red": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:thallasium_bulb_lantern_orange": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:thallasium_bulb_lantern_purple": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:thallasium_bulb_lantern_cyan": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:thallasium_bulb_lantern_brown": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:thallasium_bulb_lantern_green": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:thallasium_bulb_lantern_yellow": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:thallasium_bulb_lantern_pink": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
+    },
+    "betterend:thallasium_bulb_lantern_light_blue": {
+        "temperature": 0.5
     },
     "betterend:terminite_bulb_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:terminite_bulb_lantern_white": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+    "temperature": 0.5
     },
     "betterend:terminite_bulb_lantern_gray": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:terminite_bulb_lantern_light_gray": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:terminite_bulb_lantern_black": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:terminite_bulb_lantern_blue": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:terminite_bulb_lantern_lime": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:terminite_bulb_lantern_magenta": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:terminite_bulb_lantern_red": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:terminite_bulb_lantern_orange": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:terminite_bulb_lantern_purple": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+    "temperature": 0.5
     },
     "betterend:terminite_bulb_lantern_cyan": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:terminite_bulb_lantern_brown": {
-        "max_count": 10,
-        "1": 0.3,
-            "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:terminite_bulb_lantern_green": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:terminite_bulb_lantern_yellow": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:terminite_bulb_lantern_pink": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:terminite_bulb_lantern_light_blue": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:iron_bulb_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:iron_bulb_lantern_white": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:iron_bulb_lantern_gray": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:iron_bulb_lantern_light_gray": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:iron_bulb_lantern_black": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:iron_bulb_lantern_blue": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:iron_bulb_lantern_lime": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:iron_bulb_lantern_magenta": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:iron_bulb_lantern_red": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:iron_bulb_lantern_orange": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:iron_bulb_lantern_purple": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:iron_bulb_lantern_cyan": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:iron_bulb_lantern_brown": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:iron_bulb_lantern_green": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:iron_bulb_lantern_yellow": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:iron_bulb_lantern_pink": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:iron_bulb_lantern_light_blue": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:filalux_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:blue_vine_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     },
     "betterend:amarantia_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "temperature": 0.5
     }
 }
