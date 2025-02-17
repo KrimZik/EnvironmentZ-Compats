@@ -3,47 +3,25 @@ name: Create Release Zip
 on:
   push:
     tags:
-      - '*.*.*'  # Adjust tag pattern as needed
+      - '*.*.*'  # Matches tags like 1.0.0, 1.0.1, etc.
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # Check out the repository at the pushed tag
+      # Checkout the repository at the pushed tag
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
 
-      # Zip only the contents of EnvironmentZCompat by setting the working directory
+      # Zip only the contents of the EnvironmentZCompat folder.
+      # The working-directory parameter ensures only files inside EnvironmentZCompat are zipped.
       - name: Zip EnvironmentZCompat folder contents
         working-directory: EnvironmentZCompat
         run: |
-          # Remove any existing zip file (if necessary)
           rm -f ../environmentz-compat.zip
-          # Zip the contents so that the zip's root contains the files from EnvironmentZCompat
           zip -r ../environmentz-compat.zip *
 
-      # Create a GitHub Release using the pushed tag
-      - name: Create GitHub Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
-
-      # Upload the generated zip file as a release asset
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: environmentz-compat.zip
-          asset_name: environmentz-compat.zip
-          asset_content_type: application/zip
+      # Create a GitHub Release usin
