@@ -128,7 +128,7 @@ jobs:
             --arg project_id "$PROJECT_ID" \
             --arg primary_file "$PRIMARY_FILE" \
             --argjson file_parts "$FILE_PARTS" \
-            --argjson dependencies '[{"dependency_type": "required", "project_id": "environmentz"}]' \
+            --argjson dependencies '[{"dependency_type": "required", "project_id": "TggYmc6t"}]' \
             '{
               name: $name,
               version_number: $version_number,
