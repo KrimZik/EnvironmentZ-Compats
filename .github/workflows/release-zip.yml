@@ -1,7 +1,6 @@
 name: Create Release Zip
 permissions:
   contents: write
-  releases: write
 
 on:
   push:
