@@ -5,7 +5,7 @@
 - [Amendments](https://modrinth.com/mod/amendments)
 - [Decorative Blocks](https://modrinth.com/mod/decorative-blocks)
 - [Oxidized](https://modrinth.com/mod/oxidized)
-- [Trinket Lantern](https://modrinth.com/datapack/trinket-lantern)
+- [Wearable Lanterns](https://modrinth.com/mod/wearable-lanterns)
 - [Ribbits](https://modrinth.com/mod/ribbits)
 - [Nethers Delight Refabricated](https://modrinth.com/mod/nethers-delight-refabricated/versions)
 - [Better Nether](https://modrinth.com/mod/betternether)
