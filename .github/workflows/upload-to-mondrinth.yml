@@ -1,0 +1,175 @@
+name: Upload to Modrinth
+
+on:
+  workflow_run:
+    workflows: ["Create Release Zip"]
+    types:
+      - completed
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Read changelog from file
+        id: changelog
+        run: |
+          if [ -f CHANGELOG.md ]; then
+            CHANGELOG=$(jq -Rs . < CHANGELOG.md)
+          else
+            CHANGELOG="\"No changelog provided.\""
+          fi
+          echo "CHANGELOG=$CHANGELOG" >> $GITHUB_ENV
+      - name: Debug Secrets
+        run: |
+          if [ -z "${{ secrets.MODRINTH_PAT }}" ]; then
+            echo "❌ ERROR: MODRINTH_PAT is not set in GitHub Secrets!"
+            exit 1
+          else
+            echo "✅ MODRINTH_PAT is set."
+          fi
+
+      - name: Download release assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p release-assets
+          
+          RELEASE_ID=$(curl -s -H "Authorization: token $GH_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/latest" \
+            | jq -r '.id')
+
+          if [[ "$RELEASE_ID" == "null" || -z "$RELEASE_ID" ]]; then
+            echo "❌ ERROR: No release found."
+            exit 1
+          fi
+
+          ASSETS=$(curl -s -H "Authorization: token $GH_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/$RELEASE_ID/assets" \
+            | jq -r '.[].browser_download_url')
+
+          if [ -z "$ASSETS" ]; then
+            echo "❌ ERROR: No assets found for this release."
+            exit 1
+          fi
+
+          for URL in $ASSETS; do
+            wget -P release-assets/ "$URL"
+          done
+
+          ls -l release-assets  # Debugging
+
+      - name: Find valid ZIP files
+        id: find_zips
+        run: |
+          ZIP_FILES=$(ls release-assets/EnvironmentZCompat-*-*.zip 2>/dev/null || echo "")
+
+          if [ -z "$ZIP_FILES" ]; then
+            echo "❌ ERROR: No valid zip files found."
+            exit 1
+          fi
+
+          echo "ZIP_FILES=$ZIP_FILES" >> $GITHUB_ENV
+
+      - name: Extract version information
+        id: extract_versions
+        run: |
+          FILE=$(echo "$ZIP_FILES" | head -n1)  # Select the first valid ZIP file
+          if [ -z "$FILE" ]; then
+            echo "❌ ERROR: No valid ZIP file found!"
+            exit 1
+          fi
+
+          MOD_VERSION=$(echo "$FILE" | grep -oP 'EnvironmentZCompat-\K[\d]+\.[\d]+\.[\d]+(?=-)')
+          MC_VERSION=$(echo "$FILE" | grep -oP '[\d]+\.[\d]+\.[\d]+(?=\.zip)')
+
+          if [ -z "$MOD_VERSION" ] || [ -z "$MC_VERSION" ]; then
+            echo "❌ ERROR: Failed to extract version numbers from $FILE"
+            exit 1
+          fi
+
+          PRIMARY_FILE=$(basename "$FILE")  # Now PRIMARY_FILE is correctly assigned
+
+          echo "MOD_VERSION=$MOD_VERSION" >> $GITHUB_ENV
+          echo "MC_VERSION=$MC_VERSION" >> $GITHUB_ENV
+          echo "PRIMARY_FILE=$PRIMARY_FILE" >> $GITHUB_ENV
+          echo "✅ Extracted versions: Mod Version: $MOD_VERSION, Minecraft Version: $MC_VERSION"
+
+      - name: Validate Modrinth Project ID
+        run: |
+          PROJECT_ID="${{ vars.MODRINTH_PROJECT_ID }}"
+
+          if [[ -z "$PROJECT_ID" || ! "$PROJECT_ID" =~ ^[a-zA-Z0-9]{8,12}$ ]]; then
+            echo "❌ ERROR: Invalid or missing MODRINTH_PROJECT_ID"
+            exit 1
+          fi
+
+          echo "PROJECT_ID=$PROJECT_ID" >> $GITHUB_ENV
+
+      - name: Upload to Modrinth
+        run: |
+          MODRINTH_API_URL="https://api.modrinth.com/v2/version"
+          PROJECT_ID="${{ vars.MODRINTH_PROJECT_ID }}"
+          USER_AGENT="${{ github.repository_owner }}/EnvironmentZCompats/${{ env.MOD_VERSION }} (github.com/${{ github.repository_owner }})"
+
+          # Ensure the primary file exists
+          if [ ! -f "release-assets/$PRIMARY_FILE" ]; then
+            echo "❌ ERROR: Primary file $PRIMARY_FILE does not exist."
+            exit 1
+          fi
+
+          # Generate a correct file_parts list
+          FILE_PARTS="[\"$PRIMARY_FILE\"]"
+
+          # Generate JSON metadata
+          METADATA=$(jq -n \
+            --arg name "EnvironmentZCompats $MC_VERSION + Extras" \
+            --arg version_number "$MOD_VERSION" \
+            --argjson changelog "$CHANGELOG" \
+            --argjson game_versions "[\"$MC_VERSION\"]" \
+            --argjson loaders "[\"minecraft\"]" \
+            --arg version_type "release" \
+            --arg project_id "$PROJECT_ID" \
+            --arg primary_file "$PRIMARY_FILE" \
+            --argjson file_parts "$FILE_PARTS" \
+            --argjson dependencies '[{"dependency_type": "required", "project_id": "TggYmc6t"}, {"dependency_type": "optional", "project_id": "8oi3bsk5"}]' \
+            --argjson featured "true" \
+            '{
+              name: $name,
+              version_number: $version_number,
+              changelog: $changelog,
+              game_versions: $game_versions,
+              loaders: $loaders,
+              version_type: $version_type,
+              project_id: $project_id,
+              primary_file: $primary_file,
+              file_parts: $file_parts,
+              dependencies: $dependencies,
+              "featured": $featured
+            }')
+
+          # Debugging: Print JSON payload before sending
+          echo "Generated JSON metadata:"
+          echo "$METADATA" | jq .
+
+          # Upload the version to Modrinth
+          RESPONSE=$(curl -X POST "$MODRINTH_API_URL" \
+            -H "Authorization: ${{ secrets.MODRINTH_PAT }}" \
+            -H "User-Agent: $USER_AGENT" \
+            -H "Content-Type: multipart/form-data" \
+            -F "data=$METADATA" \
+            -F "primary_file=@release-assets/$PRIMARY_FILE" -w "%{http_code}" -o upload_response.json)
+
+          HTTP_STATUS=$(tail -n1 <<< "$RESPONSE")
+
+          if [[ "$HTTP_STATUS" != "200" && "$HTTP_STATUS" != "201" ]]; then
+            echo "❌ ERROR: Upload failed with status code $HTTP_STATUS"
+            cat upload_response.json
+            exit 1
+          else
+            echo "✅ Successfully uploaded to Modrinth"
+          fi
