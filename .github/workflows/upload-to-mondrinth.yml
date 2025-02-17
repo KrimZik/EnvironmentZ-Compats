@@ -127,7 +127,7 @@ jobs:
 
           # Generate JSON metadata
           METADATA=$(jq -n \
-            --arg name "EnvironmentZCompats $MOD_VERSION" \
+            --arg name "EnvironmentZCompats $MC_VERSION + Extras" \
             --arg version_number "$MOD_VERSION" \
             --argjson changelog "$CHANGELOG" \
             --argjson game_versions "[\"$MC_VERSION\"]" \
