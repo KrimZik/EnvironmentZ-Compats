@@ -4,7 +4,7 @@ permissions:
 
 on:
   release:
-    types: [published, edited]  # Runs when a release is published or edited (assets added)
+    types: [published, edited]  # Runs when a release is published or assets are added
 
 jobs:
   upload-to-modrinth:
@@ -15,7 +15,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2️⃣ Get existing uploaded versions from Modrinth
+      # 2️⃣ Download all release assets (ZIP files)
+      - name: Download release assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p release-assets
+          gh release download ${{ github.event.release.tag_name }} --dir release-assets
+          ls -l release-assets  # Debugging: List downloaded files
+
+      # 3️⃣ Get existing uploaded versions from Modrinth
       - name: Fetch existing versions from Modrinth
         id: fetch_existing_versions
         run: |
@@ -28,15 +37,15 @@ jobs:
           echo "$RESPONSE" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-      # 3️⃣ Find all valid release ZIP files
+      # 4️⃣ Find all valid release ZIP files
       - name: Find valid ZIP files
         id: find_zips
         run: |
           TAG_NAME="${{ github.event.release.tag_name }}"
-          ZIP_FILES=$(ls EnvironmentZCompat-${TAG_NAME}-*.zip 2>/dev/null || echo "")
+          ZIP_FILES=$(ls release-assets/EnvironmentZCompat-${TAG_NAME}-*.zip 2>/dev/null || echo "")
 
           if [ -z "$ZIP_FILES" ]; then
-            echo "❌ ERROR: No valid zip files found!"
+            echo "❌ ERROR: No valid zip files found in release-assets/"
             exit 1
           fi
 
@@ -46,7 +55,7 @@ jobs:
           echo "$ZIP_FILES" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-      # 4️⃣ Upload only new ZIP files
+      # 5️⃣ Upload only new ZIPs to Modrinth
       - name: Upload new ZIPs to Modrinth
         run: |
           for FILE in ${{ env.ZIP_FILES }}; do
