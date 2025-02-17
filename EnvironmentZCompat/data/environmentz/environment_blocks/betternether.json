@@ -22,5 +22,26 @@
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
+    },
+    "betternether:blackstone_furnace": {
+        "property": "lit",
+        "max_count": 6,
+        "1": 0.9,
+        "6": 0.6,
+        "9": 0.3
+    },
+    "betternether:basalt_furnace": {
+        "property": "lit",
+        "max_count": 6,
+        "1": 0.9,
+        "6": 0.6,
+        "9": 0.3
+    },
+    "betternether:netherrack_furnace": {
+        "property": "lit",
+        "max_count": 6,
+        "1": 0.9,
+        "6": 0.6,
+        "9": 0.3
     }
 }
