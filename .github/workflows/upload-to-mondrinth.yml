@@ -136,7 +136,7 @@ jobs:
             --arg project_id "$PROJECT_ID" \
             --arg primary_file "$PRIMARY_FILE" \
             --argjson file_parts "$FILE_PARTS" \
-            --argjson dependencies '[{"dependency_type": "required", "project_id": "TggYmc6t"}]' \
+            --argjson dependencies '[{"dependency_type": "required", "project_id": "TggYmc6t"}, {"dependency_type": "optional", "project_id": "8oi3bsk5"}]' \
             --argjson featured "true" \
             '{
               name: $name,
