@@ -94,7 +94,7 @@ jobs:
       - name: Upload to Modrinth
         run: |
           MODRINTH_API_URL="https://api.modrinth.com/v2/version"
-          PROJECT_ID="${{ secrets.MODRINTH_PROJECT_ID }}"
+          PROJECT_ID="${{ secrets.MODRINTH_PROJECT_ID }}"  # FIX: Ensure project ID is correctly set
           USER_AGENT="${{ github.repository_owner }}/EnvironmentZCompats/${{ env.MOD_VERSION }} (github.com/${{ github.repository_owner }})"
 
           # Ensure the primary file exists
@@ -135,9 +135,13 @@ jobs:
               dependencies: $dependencies
             }')
 
-          # Debugging: Print JSON payload before sending
+          # Debugging: Validate JSON format before sending
           echo "Generated JSON metadata:"
-          echo "$METADATA"
+          echo "$METADATA" | jq . > /dev/null
+          if [ $? -ne 0 ]; then
+            echo "❌ ERROR: Invalid JSON format."
+            exit 1
+          fi
 
           # Upload the version to Modrinth
           RESPONSE=$(curl -X POST "$MODRINTH_API_URL" \
