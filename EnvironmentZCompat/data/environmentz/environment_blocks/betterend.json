@@ -394,5 +394,68 @@
         "1": 0.3,
         "6": 0.2,
         "9": 0.1
+    },
+    "betterend:flavolite_furnace": {
+        "property": "lit",
+        "max_count": 6,
+        "1": 0.9,
+        "6": 0.6,
+        "9": 0.3
+    },
+    "betterend:violecite_furnace": {
+        "property": "lit",
+        "max_count": 6,
+        "1": 0.9,
+        "6": 0.6,
+        "9": 0.3
+    },
+    "betterend:sulphuric_rock_furnace": {
+        "property": "lit",
+        "max_count": 6,
+        "1": 0.9,
+        "6": 0.6,
+        "9": 0.3
+    },
+    "betterend:end_stone_furnace": {
+        "property": "lit",
+        "max_count": 6,
+        "1": 0.9,
+        "6": 0.6,
+        "9": 0.3
+    },
+    "betterend:end_stone_smelter": {
+        "property": "lit",
+        "max_count": 6,
+        "1": 0.9,
+        "6": 0.6,
+        "9": 0.3
+    },
+    "betterend:virid_jadestone_furnace": {
+        "property": "lit",
+        "max_count": 6,
+        "1": 0.9,
+        "6": 0.6,
+        "9": 0.3
+    },
+    "betterend:azure_jadestone_furnace": {
+        "property": "lit",
+        "max_count": 6,
+        "1": 0.9,
+        "6": 0.6,
+        "9": 0.3
+    },
+    "betterend:sandy_jadestone_furnace": {
+        "property": "lit",
+        "max_count": 6,
+        "1": 0.9,
+        "6": 0.6,
+        "9": 0.3
+    },
+    "betterend:umbralith_furnace": {
+        "property": "lit",
+        "max_count": 6,
+        "1": 0.9,
+        "6": 0.6,
+        "9": 0.3
     }
 }
