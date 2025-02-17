@@ -15,13 +15,37 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2️⃣ Download all release assets (ZIP files)
+      # 2️⃣ Fetch release assets using GitHub API instead of gh CLI
       - name: Download release assets
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir -p release-assets
-          gh release download ${{ github.event.release.tag_name }} --dir release-assets
+          RELEASE_ID=$(curl -s -H "Authorization: token $GH_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/tags/${{ github.event.release.tag_name }}" \
+            | jq -r '.id')
+
+          if [ -z "$RELEASE_ID" ] || [ "$RELEASE_ID" == "null" ]; then
+            echo "❌ ERROR: No release found for tag ${{ github.event.release.tag_name }}"
+            exit 1
+          fi
+
+          ASSETS=$(curl -s -H "Authorization: token $GH_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/$RELEASE_ID/assets" \
+            | jq -r '.[] | .browser_download_url')
+
+          if [ -z "$ASSETS" ]; then
+            echo "❌ ERROR: No assets found for this release."
+            exit 1
+          fi
+
+          echo "✅ Found assets:"
+          echo "$ASSETS"
+
+          for URL in $ASSETS; do
+            wget -P release-assets/ "$URL"
+          done
+
           ls -l release-assets  # Debugging: List downloaded files
 
       # 3️⃣ Get existing uploaded versions from Modrinth
