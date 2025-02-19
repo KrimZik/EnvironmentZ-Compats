@@ -1,6 +1,9 @@
 {
     "replace": false,
     "values": [
-        "naturalist:bear_fur"
+        {
+            "id": "naturalist:bear_fur",
+            "required": false
+        }
     ]
 }

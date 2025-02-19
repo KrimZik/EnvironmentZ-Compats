@@ -1,9 +1,21 @@
 {
     "replace": false,
     "values": [
-        "meadow:fur_boots",
-        "meadow:fur_leggings",
-        "meadow:fur_chestplate",
-        "meadow:fur_helmet"
+        {
+            "id": "meadow:fur_boots",
+            "required": false
+        },
+        {
+            "id": "meadow:fur_leggings",
+            "required": false
+        },
+        {
+            "id": "meadow:fur_chestplate",
+            "required": false
+        },
+        {
+            "id": "meadow:fur_helmet",
+            "required": false
+        }
     ]
   }

@@ -1,29 +1,101 @@
 {
     "replace": false,
     "values": [
-        "candlelight:flower_crown",
-        "candlelight:dress",
-        "candlelight:trousers_and_vest",
-        "candlelight:shirt",
-        "brewery:brewfest_dress",
-        "brewery:brewfest_regalia",
-        "brewery:brewfest_hat",
-        "brewery:brewfest_hat_red",
-        "brewery:brewfest_shoes",
-        "brewery:brewfest_boots",
-        "brewery:brewfest_blouse",
-        "brewery:brewfest_trousers",
-        "vinery:straw_hat",
-        "vinery:winemaker_apron",
-        "vinery:winemaker_leggings",
-        "vinery:winemaker_boots",
-        "herbalbrews:witch_hat",
-        "herbalbrews:top_hat",
-        "beachparty:sunglasses",
-        "beachparty:beach_hat",
-        "beachparty:trunks",
-        "beachparty:bikini",
-        "beachparty:crocs",
-        "beachparty:swim_wings"
+        {
+            "id": "candlelight:flower_crown",
+            "required": false
+        },
+        {
+            "id": "candlelight:dress",
+            "required": false
+        },
+        {
+            "id": "candlelight:trousers_and_vest",
+            "required": false
+        },
+        {
+            "id": "candlelight:shirt",
+            "required": false
+        },
+        {
+            "id": "brewery:brewfest_dress",
+            "required": false
+        },
+        {
+            "id": "brewery:brewfest_regalia",
+            "required": false
+        },
+        {
+            "id": "brewery:brewfest_hat",
+            "required": false
+        },
+        {
+            "id": "brewery:brewfest_hat_red",
+            "required": false
+        },
+        {
+            "id": "brewery:brewfest_shoes",
+            "required": false
+        },
+        {
+            "id": "brewery:brewfest_boots",
+            "required": false
+        },
+        {
+            "id": "brewery:brewfest_blouse",
+            "required": false
+        },
+        {
+            "id": "brewery:brewfest_trousers",
+            "required": false
+        },
+        {
+            "id": "vinery:straw_hat",
+            "required": false
+        },
+        {
+            "id": "vinery:winemaker_apron",
+            "required": false
+        },
+        {
+            "id": "vinery:winemaker_leggings",
+            "required": false
+        },
+        {
+            "id": "vinery:winemaker_boots",
+            "required": false
+        },
+        {
+            "id": "herbalbrews:witch_hat",
+            "required": false
+        },
+        {
+            "id": "herbalbrews:top_hat",
+            "required": false
+        },
+        {
+            "id": "beachparty:sunglasses",
+            "required": false
+        },
+        {
+            "id": "beachparty:beach_hat",
+            "required": false
+        },
+        {
+            "id": "beachparty:trunks",
+            "required": false
+        },
+        {
+            "id": "beachparty:bikini",
+            "required": false
+        },
+        {
+            "id": "beachparty:crocs",
+            "required": false
+        },
+        {
+            "id": "beachparty:swim_wings",
+            "required": false
+        }
     ]
 }

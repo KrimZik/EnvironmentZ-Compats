@@ -1,9 +1,21 @@
 {
     "replace": false,
     "values": [
-        "powah:dry_ice",
-        "betterend:emerald_ice",
-        "betterend:dense_emerald_ice",
-        "betterend:ancient_emerald_ice"
+        {
+            "id": "powah:dry_ice",
+            "required": false
+        },
+        {
+            "id": "betterend:emerald_ice",
+            "required": false
+        },
+        {
+            "id": "betterend:dense_emerald_ice",
+            "required": false
+        },
+        {
+            "id": "betterend:ancient_emerald_ice",
+            "required": false
+        }
     ]
 }
