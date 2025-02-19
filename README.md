@@ -16,6 +16,7 @@
 - [Macaw's Bridges](https://modrinth.com/mod/macaws-bridges)
 - [Naturalist](https://modrinth.com/mod/naturalist)
 - [Applied Energistics 2](https://modrinth.com/mod/ae2)
+- [Powah! (Rearchitected)](https://modrinth.com/mod/powah)
 
 Version 1.20 of Minecraft is the primary focus for this datapack, 1.21 will have whatever compatibilities 1.20 has as long as the mod is updated to 1.21
 It is recommended to add terralith to your datapack/mods folder for a better experience, however it is not required.
