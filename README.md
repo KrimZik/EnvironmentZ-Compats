@@ -1,6 +1,7 @@
 ## Compatibilies
 - [Terralith](https://modrinth.com/datapack/terralith)
 - [Fabric Seasons: Extras](https://modrinth.com/mod/fabric-seasons-extras)
+- [The Bumblezone](https://modrinth.com/mod/the-bumblezone-fabric)
 - [Chipped](https://modrinth.com/mod/chipped)
 - [Amendments](https://modrinth.com/mod/amendments)
 - [Decorative Blocks](https://modrinth.com/mod/decorative-blocks)
