@@ -1,0 +1,9 @@
+{
+    "replace": false,
+    "values": [
+        "powah:dry_ice",
+        "betterend:emerald_ice",
+        "betterend:dense_emerald_ice",
+        "betterend:ancient_emerald_ice"
+    ]
+}
