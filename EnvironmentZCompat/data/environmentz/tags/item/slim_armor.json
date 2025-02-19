@@ -1,0 +1,29 @@
+{
+    "replace": false,
+    "values": [
+        "candlelight:flower_crown",
+        "candlelight:dress",
+        "candlelight:trousers_and_vest",
+        "candlelight:shirt",
+        "brewery:brewfest_dress",
+        "brewery:brewfest_regalia",
+        "brewery:brewfest_hat",
+        "brewery:brewfest_hat_red",
+        "brewery:brewfest_shoes",
+        "brewery:brewfest_boots",
+        "brewery:brewfest_blouse",
+        "brewery:brewfest_trousers",
+        "vinery:straw_hat",
+        "vinery:winemaker_apron",
+        "vinery:winemaker_leggings",
+        "vinery:winemaker_boots",
+        "herbalbrews:witch_hat",
+        "herbalbrews:top_hat",
+        "beachparty:sunglasses",
+        "beachparty:beach_hat",
+        "beachparty:trunks",
+        "beachparty:bikini",
+        "beachparty:crocs",
+        "beachparty:swim_wings"
+    ]
+}
