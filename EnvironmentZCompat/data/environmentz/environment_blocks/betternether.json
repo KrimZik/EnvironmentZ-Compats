@@ -1,47 +1,47 @@
 {
     "betternether:willow_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "betternether:cincinnasite_lantern_small": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "betternether:cincinnasite_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
-    },
-    "betternether:whispering_gourd_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "betternether:blackstone_furnace": {
         "property": "lit",
-        "max_count": 6,
-        "1": 0.9,
-        "6": 0.6,
-        "9": 0.3
+        "max_count": 3,
+        "0": 3,
+        "1": 2,
+        "2": 1,
+        "3": 0
     },
     "betternether:basalt_furnace": {
         "property": "lit",
-        "max_count": 6,
-        "1": 0.9,
-        "6": 0.6,
-        "9": 0.3
+        "max_count": 3,
+        "0": 3,
+        "1": 2,
+        "2": 1,
+        "3": 0
     },
     "betternether:netherrack_furnace": {
         "property": "lit",
-        "max_count": 6,
-        "1": 0.9,
-        "6": 0.6,
-        "9": 0.3
+        "max_count": 3,
+        "0": 3,
+        "1": 2,
+        "2": 1,
+        "3": 0
     }
 }

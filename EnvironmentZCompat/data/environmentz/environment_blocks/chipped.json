@@ -1,438 +1,516 @@
 {
     "chipped:blue_paper_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:burning_coal_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:checkered_iron_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:dark_blue_paper_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:ender_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:green_paper_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:iron_bowl_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:purple_paper_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:red_paper_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:small_green_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:white_paper_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:wooden_cage_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:wrought_iron_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:yellow_tube_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:blue_paper_soul_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:blue_tube_soul_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:checkered_iron_soul_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:golden_paper_soul_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:gray_paper_soul_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:iron_bowl_soul_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:lime_paper_soul_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:orange_paper_soul_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:small_red_soul_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:wooden_cage_soul_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:yellow_paper_soul_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:big_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:donut_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:tall_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:wide_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:big_soul_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:donut_soul_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:tall_soul_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:wide_soul_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:edged_glowstone_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:fancy_glowstone_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:framed_glowstone_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:glowstone_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:ornate_glowstone_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:edged_shroomlight_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:fancy_shroomlight_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:framed_shroomlight_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:ornate_shroomlight_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:shroomlight_lantern": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:acacia_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:acacia_wall_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:birch_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:birch_wall_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:crimson_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:crimson_wall_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:dark_oak_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:dark_oak_wall_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:glow_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:glow_wall_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:iron_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:iron_wall_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:jungle_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:jungle_wall_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:spruce_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:spruce_wall_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:warped_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:warped_wall_torch": {
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:blue_redstone_torch": {
         "property": "lit",
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:blue_redstone_wall_torch": {
         "property": "lit",
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:crimson_redstone_torch": {
         "property": "lit",
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:crimson_redstone_wall_torch": {
         "property": "lit",
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:green_redstone_torch": {
         "property": "lit",
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:green_redstone_wall_torch": {
         "property": "lit",
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:lightstick_redstone_torch": {
         "property": "lit",
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:lightstick_redstone_wall_torch": {
         "property": "lit",
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:yellow_redstone_torch": {
         "property": "lit",
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     },
     "chipped:yellow_redstone_wall_torch": {
         "property": "lit",
-        "max_count": 10,
-        "1": 0.3,
-        "6": 0.2,
-        "9": 0.1
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
+    },
+    "chipped:tinkering_table": {
+        "max_count": 1,
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 0
     }
 }
