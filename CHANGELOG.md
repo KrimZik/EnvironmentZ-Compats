@@ -1,3 +1,2 @@
 ### Changes
-- Added Furnace support for BetterNether, BetterEnd, and Nethers Delight
-- Added Applied Energistics 2 Vibration Chamber compat
+- Added The Bumblezone world temperatures compat
