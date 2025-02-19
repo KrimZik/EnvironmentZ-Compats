@@ -1,8 +1,8 @@
 {
     "beachparty:palm_torch": {
-        "temperature": 0.5
+        "temperature": 1
     },
     "beachparty:palm_tall_torch": {
-        "temperature": 0.5
+        "temperature": 1
     }
 }
