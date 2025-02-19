@@ -1,3 +1,191 @@
 {
-    
+    "powah:reactor_starter": {
+        "max_count": 5,
+        "1": 2,
+        "6": 1.5,
+        "9": 1,
+        "12": 0.5,
+        "15": 0.25
+    },
+    "powah:reactor_basic": {
+        "max_count": 5,
+        "1": 2.5,
+        "6": 2,
+        "9": 1.5,
+        "12": 1,
+        "15": 0.5
+    },
+    "powah:reactor_hardened": {
+        "max_count": 5,
+        "1": 3,
+        "6": 2.5,
+        "9": 2,
+        "12": 1.5,
+        "15": 1
+    },
+    "powah:reactor_blazing": {
+        "max_count": 5,
+        "1": 4,
+        "6": 3.5,
+        "9": 3,
+        "12": 2.5,
+        "15": 2
+    },
+    "powah:reactor_niotic": {
+        "max_count": 5,
+        "1": 4.5,
+        "6": 4,
+        "9": 3.5,
+        "12": 3,
+        "15": 2.5
+    },
+    "powah:reactor_spirited": {
+        "max_count": 5,
+        "1": 5,
+        "6": 4.5,
+        "9": 4,
+        "12": 3.5,
+        "15": 3
+    },
+    "powah:reactor_nitro": {
+        "max_count": 5,
+        "1": 5.5,
+        "6": 5,
+        "9": 4.5,
+        "12": 4,
+        "15": 3.5
+    },
+    "powah:furnator_starter": {
+        "max_count": 20,
+        "1": 0.5,
+        "3": 0.25,
+        "6": 0.125
+    },
+    "powah:furnator_basic": {
+        "max_count": 20,
+        "1": 0.6,
+        "3": 0.3,
+        "6": 0.15
+    },
+    "powah:furnator_hardened": {
+        "max_count": 20,
+        "1": 0.7,
+        "3": 0.35,
+        "6": 0.17
+    },
+    "powah:furnator_blazing": {
+        "max_count": 20,
+        "1": 0.8,
+        "3": 0.4,
+        "6": 0.2
+    },
+    "powah:furnator_niotic": {
+        "max_count": 20,
+        "1": 0.9,
+        "3": 0.45,
+        "6": 0.23
+    },
+    "powah:furnator_spirited": {
+        "max_count": 20,
+        "1": 1,
+        "3": 0.5,
+        "6": 0.25
+    },
+    "powah:furnator_nitro": {
+        "max_count": 20,
+        "1": 1.1,
+        "3": 0.55,
+        "6": 0.28
+    },
+    "powah:magmator_starter": {
+        "property": "lit",
+        "max_count": 20,
+        "1": 0.8,
+        "3": 0.4,
+        "6": 0.2
+    },
+    "powah:magmator_basic": {
+        "property": "lit",
+        "max_count": 20,
+        "1": 0.9,
+        "3": 0.45,
+        "6": 0.23
+    },
+    "powah:magmator_hardened": {
+        "property": "lit",
+        "max_count": 20,
+        "1": 1,
+        "3": 0.5,
+        "6": 0.25
+    },
+    "powah:magmator_blazing": {
+        "property": "lit",
+        "max_count": 20,
+        "1": 1.1,
+        "3": 0.55,
+        "6": 0.28
+    },
+    "powah:magmator_niotic": {
+        "property": "lit",
+        "max_count": 20,
+        "1": 1.2,
+        "3": 0.6,
+        "6": 0.3
+    },
+    "powah:magmator_spirited": {
+        "property": "lit",
+        "max_count": 20,
+        "1": 1.3,
+        "3": 0.65,
+        "6": 0.33
+    },
+    "powah:magmator_nitro": {
+        "property": "lit",
+        "max_count": 20,
+        "1": 1.4,
+        "3": 0.7,
+        "6": 0.45
+    },
+    "powah:thermo_generator_starter": {
+        "max_count": 10,
+        "1": 0.1,
+        "3": 0.05,
+        "6": 0.025
+    },
+    "powah:thermo_generator_basic": {
+        "max_count": 10,
+        "1": 0.2,
+        "3": 0.1,
+        "6": 0.05
+    },
+    "powah:thermo_generator_hardened": {
+        "max_count": 10,
+        "1": 0.3,
+        "3": 0.15,
+        "6": 0.02
+    },
+    "powah:thermo_generator_blazing": {
+        "max_count": 10,
+        "1": 0.4,
+        "3": 0.2,
+        "6": 0.1
+    },
+    "powah:thermo_generator_niotic": {
+        "max_count": 10,
+        "1": 0.5,
+        "3": 0.25,
+        "6": 0.12
+    },
+    "powah:thermo_generator_spirited": {
+        "max_count": 10,
+        "1": 0.6,
+        "3": 0.3,
+        "6": 0.15
+    },
+    "powah:thermo_generator_nitro": {
+        "max_count": 10,
+        "1": 0.7,
+        "3": 0.45,
+        "6": 0.23
+    }
 }
