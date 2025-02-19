@@ -1,9 +1,0 @@
-{
-    "replace": false,
-    "values": [
-        {
-            "id": "naturalist:bear_fur",
-            "required": false
-        }
-    ]
-}
