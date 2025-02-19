@@ -9,5 +9,5 @@
 - [Better End](https://modrinth.com/mod/betterend)
 - [Applied Energistics 2](https://modrinth.com/mod/ae2)
 
-Marked as compatible with version 1.20.1 however some compats do work on 1.21 versions of mods.
-As of versions 0.0.1 to 0.1.0 it is recommended to add terralith to your datapack/mods folder for a better experience, however it is not required.
+Version 1.20 of Minecraft is the primary focus for this datapack, 1.21 will have whatever compatibilities 1.20 has as long as the mod is updated to 1.21
+It is recommended to add terralith to your datapack/mods folder for a better experience, however it is not required.
