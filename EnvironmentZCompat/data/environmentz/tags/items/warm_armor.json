@@ -2,20 +2,20 @@
     "replace": false,
     "values": [
         {
-            "id": "powah:dry_ice",
+            "id": "meadow:fur_boots",
             "required": false
         },
         {
-            "id": "betterend:emerald_ice",
+            "id": "meadow:fur_leggings",
             "required": false
         },
         {
-            "id": "betterend:dense_emerald_ice",
+            "id": "meadow:fur_chestplate",
             "required": false
         },
         {
-            "id": "betterend:ancient_emerald_ice",
+            "id": "meadow:fur_helmet",
             "required": false
         }
     ]
-}
+  }
